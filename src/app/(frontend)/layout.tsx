@@ -1,9 +1,11 @@
 import React from 'react'
 import './styles.css'
+import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
 
 export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+  description: 'Punya masalah website? Gawe.in aja, Beres!',
+  title: 'Gawe.in - Jasa Pembuatan Website',
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
@@ -11,8 +13,10 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html lang="en">
-      <body>
+      <body className="min-h-screen">
+        <Navbar />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   )

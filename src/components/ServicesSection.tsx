@@ -69,12 +69,12 @@ export const ServicesSection = () => {
 
   return (
     <section className="py-20 bg-gradient-to-br from-[#E6F2FF]/30 via-[#FAFAFA] to-[#E6F2FF]/50 relative overflow-hidden">
-      {/* Background Elements */}
+      
       <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-[#1E90FF]/10 to-[#0057B8]/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-bl from-[#0057B8]/15 to-[#1E90FF]/15 rounded-full blur-3xl"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
+        
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 bg-[#E6F2FF] text-[#0057B8] text-sm font-semibold rounded-full mb-4">
             Layanan Kami
@@ -88,23 +88,23 @@ export const ServicesSection = () => {
           </p>
         </div>
 
-        {/* Services Grid */}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div
               key={index}
               className="group relative bg-[#FAFAFA]/80 backdrop-blur-sm border border-[#E6F2FF] rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:bg-gradient-to-br hover:from-[#FAFAFA] hover:to-[#E6F2FF]/50"
             >
-              {/* Icon */}
+              
               <div className="w-16 h-16 bg-gradient-to-r from-[#1E90FF] to-[#0057B8] rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
 
-              {/* Content */}
+              
               <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
 
-              {/* Features */}
+              
               <div className="space-y-2 mb-6">
                 {service.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-center text-sm text-gray-600">
@@ -114,18 +114,18 @@ export const ServicesSection = () => {
                 ))}
               </div>
 
-              {/* CTA */}
+              
               <Button size="sm" variant="outline" className="w-full group-hover:bg-[#1E90FF] group-hover:text-white group-hover:border-[#1E90FF]">
                 Selengkapnya
               </Button>
 
-              {/* Hover Effect */}
+              
               <div className="absolute inset-0 bg-gradient-to-r from-[#1E90FF]/5 to-[#0057B8]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
             </div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
+        
         <div className="text-center mt-16">
           <div className="inline-flex flex-col sm:flex-row gap-4">
             <Button size="lg" variant="primary">

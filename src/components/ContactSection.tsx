@@ -20,19 +20,19 @@ export const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission logic here
+
     console.log('Form submitted:', formData)
   }
 
   return (
     <section className="py-20 bg-gradient-to-br from-[#FAFAFA] via-[#E6F2FF]/30 to-[#FAFAFA] relative overflow-hidden">
-      {/* Background Elements */}
+      
       <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-[#1E90FF]/10 to-transparent rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-[#0057B8]/10 to-transparent rounded-full blur-3xl"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Contact Information */}
+          
           <div className="space-y-8">
             <div>
               <span className="inline-block px-4 py-2 bg-[#E6F2FF] text-[#0057B8] text-sm font-semibold rounded-full mb-4">
@@ -50,7 +50,7 @@ export const ContactSection = () => {
               </p>
             </div>
 
-            {/* Contact Details */}
+            
             <div className="space-y-6">
               <div className="flex items-start space-x-4 p-4 bg-[#FAFAFA]/80 backdrop-blur-sm border border-[#E6F2FF] rounded-xl">
                 <div className="w-12 h-12 bg-gradient-to-r from-[#1E90FF] to-[#0057B8] rounded-xl flex items-center justify-center flex-shrink-0">
@@ -106,7 +106,7 @@ export const ContactSection = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
+          
           <div className="bg-[#FAFAFA]/80 backdrop-blur-sm border border-[#E6F2FF] rounded-3xl p-8 shadow-2xl">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Kirim pesan</h3>
             <form onSubmit={handleSubmit} className="space-y-6">

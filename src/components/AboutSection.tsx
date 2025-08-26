@@ -8,7 +8,7 @@ export const AboutSection = () => {
     <section className="py-20 bg-[#FAFAFA] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
+          
           <div className="space-y-8">
             <div className="space-y-4">
               <span className="inline-block px-4 py-2 bg-[#E6F2FF] text-[#0057B8] text-sm font-semibold rounded-full">
@@ -26,7 +26,7 @@ export const AboutSection = () => {
               </p>
             </div>
 
-            {/* Key Points */}
+            
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
                 <div className="w-6 h-6 bg-gradient-to-r from-[#1E90FF] to-[#0057B8] rounded-full flex-shrink-0 mt-1"></div>
@@ -56,7 +56,7 @@ export const AboutSection = () => {
             </Button>
           </div>
 
-          {/* Visual Element */}
+          
           <div className="relative">
             <div className="relative bg-gradient-to-br from-[#1E90FF]/10 to-[#0057B8]/10 rounded-3xl p-8 backdrop-blur-sm border border-[#E6F2FF] shadow-2xl">
               <div className="grid grid-cols-2 gap-6">

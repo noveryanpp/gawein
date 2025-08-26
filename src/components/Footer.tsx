@@ -73,17 +73,17 @@ export const Footer = () => {
 
   return (
     <footer className="bg-gradient-to-br from-blue-800 via-[#0057B8] to-blue-800 relative overflow-hidden">
-      {/* Background Elements */}
+      
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Main Footer Content */}
+        
         <div className="py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
-            {/* Company Info */}
+            
             <div className="lg:col-span-2 space-y-6">
               <Link href="/" className="flex items-center space-x-2">
                 <span className="text-2xl font-bold text-white">Gawe.in</span>
@@ -104,7 +104,7 @@ export const Footer = () => {
               </div>
             </div>
 
-            {/* Services */}
+            
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-white">Services</h4>
               <ul className="space-y-2">
@@ -121,7 +121,7 @@ export const Footer = () => {
               </ul>
             </div>
 
-            {/* Company */}
+            
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-white">Company</h4>
               <ul className="space-y-2">
@@ -138,7 +138,7 @@ export const Footer = () => {
               </ul>
             </div>
 
-            {/* Resources */}
+            
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-white">Resources</h4>
               <ul className="space-y-2">
@@ -155,7 +155,7 @@ export const Footer = () => {
               </ul>
             </div>
 
-            {/* Legal */}
+            
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-white">Legal</h4>
               <ul className="space-y-2">
@@ -174,7 +174,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        
         <div className="border-t border-white/20 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-[#E6F2FF] text-sm">

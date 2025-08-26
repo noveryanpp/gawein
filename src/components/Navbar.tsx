@@ -32,14 +32,14 @@ export const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+          
           <Link href="/" className="flex items-center space-x-2">
             <span className="text-xl font-bold bg-gradient-to-r from-[#1E90FF] to-[#0057B8] bg-clip-text text-transparent">
               Gawe<span className="text-black">.in</span>
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
+          
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
@@ -55,7 +55,7 @@ export const Navbar = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          
           <button
             className="md:hidden p-2 rounded-lg hover:bg-[#E6F2FF] transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -80,7 +80,7 @@ export const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        
         {isMobileMenuOpen && (
           <div className="md:hidden bg-[#FAFAFA]/95 backdrop-blur-lg border-t border-[#E6F2FF] rounded-b-2xl">
             <div className="px-4 py-6 space-y-4">

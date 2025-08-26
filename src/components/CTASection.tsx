@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button'
 export const CTASection = () => {
   return (
     <section className="py-20 relative overflow-hidden">
-      {/* Background with Gradient and Blur Effects */}
+      
       <div className="absolute inset-0 bg-gradient-to-r from-[#1E90FF] to-blue-500"></div>
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-[#1E90FF]/30 to-[#0057B8]/40"></div>
@@ -16,7 +16,7 @@ export const CTASection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center text-white">
-          {/* Content */}
+          
           <div className="max-w-4xl mx-auto space-y-8">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
               Siap Ubah
@@ -26,7 +26,7 @@ export const CTASection = () => {
               Yuk kolaborasi bareng kami untuk mewujudkan ide kamu jadi solusi teknologi yang keren dan bermanfaat. Tim kami siap bantu bisnismu tampil maksimal di dunia digital!
             </p>
 
-            {/* CTA Buttons */}
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
               <Button
                 size="lg"
@@ -44,7 +44,7 @@ export const CTASection = () => {
               </Button>
             </div>
 
-            {/* Contact Info */}
+            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 max-w-3xl mx-auto">
               <div className="text-center">
                 <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-4">
