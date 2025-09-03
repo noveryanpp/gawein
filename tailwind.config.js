@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,9 +8,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#1E90FF',
+        primary: '#2EBEFA',
         secondary: '#FAFAFA',
-        accent: '#E6F2FF',
+        accent: '#0391CC',
         'dark-accent': '#0057B8',
       },
       fontFamily: {
@@ -58,3 +58,4 @@ export default {
   plugins: [],
 }
 
+export default config;

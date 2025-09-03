@@ -202,17 +202,17 @@ const BlogPostContent = () => {
   return (
     <>
       <section className="pt-24 pb-8 bg-gradient-to-br from-[#FAFAFA] via-[#E6F2FF] to-[#FAFAFA] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#1E90FF]/10 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/10 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-[#0057B8]/10 to-transparent rounded-full blur-3xl"></div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <nav className="mb-8">
             <div className="flex items-center space-x-2 text-sm text-gray-500">
-              <Link href="/" className="hover:text-[#1E90FF] transition-colors">
+              <Link href="/" className="hover:text-primary transition-colors">
                 Home
               </Link>
               <span>/</span>
-              <Link href="/blog" className="hover:text-[#1E90FF] transition-colors">
+              <Link href="/blog" className="hover:text-primary transition-colors">
                 Blog
               </Link>
               <span>/</span>
@@ -222,7 +222,7 @@ const BlogPostContent = () => {
 
           <div className="mb-6">
             <div className="flex flex-wrap items-center gap-4 mb-4">
-              <span className="px-3 py-1 bg-gradient-to-r from-[#1E90FF] to-[#0057B8] text-white text-sm font-semibold rounded-full">
+              <span className="px-3 py-1 bg-gradient-to-r from-primary to-[#0057B8] text-white text-sm font-semibold rounded-full">
                 {currentBlog.categoryLabel}
               </span>
               <div className="flex items-center text-sm text-gray-500 space-x-4">
@@ -285,7 +285,7 @@ const BlogPostContent = () => {
                 {currentBlog.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-[#E6F2FF] text-[#0057B8] text-sm font-medium rounded-full hover:bg-[#1E90FF] hover:text-white transition-colors cursor-pointer"
+                    className="px-3 py-1 bg-[#E6F2FF] text-[#0057B8] text-sm font-medium rounded-full hover:bg-primary hover:text-white transition-colors cursor-pointer"
                   >
                     #{tag}
                   </span>
@@ -341,13 +341,13 @@ const BlogPostContent = () => {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute top-3 left-3">
-                        <span className="px-2 py-1 bg-gradient-to-r from-[#1E90FF] to-[#0057B8] text-white text-xs font-semibold rounded-full">
+                        <span className="px-2 py-1 bg-gradient-to-r from-primary to-[#0057B8] text-white text-xs font-semibold rounded-full">
                           {blog.categoryLabel}
                         </span>
                       </div>
                     </div>
                     <div className="p-6">
-                      <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#1E90FF] transition-colors line-clamp-2">
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors line-clamp-2">
                         {blog.title}
                       </h3>
                       <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">

@@ -144,7 +144,7 @@ const AboutContent = () => {
   return (
     <>
       <section className="pt-24 pb-16 bg-gradient-to-br from-[#FAFAFA] via-[#E6F2FF] to-[#FAFAFA] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#1E90FF]/10 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/10 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-[#0057B8]/10 to-transparent rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -153,7 +153,7 @@ const AboutContent = () => {
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             Menginovasi{' '}
-            <span className="bg-gradient-to-r from-[#1E90FF] to-[#0057B8] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-[#0057B8] bg-clip-text text-transparent">
               Masa Depan Digital
             </span>
           </h1>
@@ -199,25 +199,25 @@ const AboutContent = () => {
               <div className="bg-gradient-to-br from-[#FAFAFA] to-[#E6F2FF] rounded-3xl p-8 backdrop-blur-sm border border-[#E6F2FF] shadow-2xl">
                 <div className="grid grid-cols-2 gap-6 text-center">
                   <div>
-                    <div className="text-4xl font-bold bg-gradient-to-r from-[#1E90FF] to-[#0057B8] bg-clip-text text-transparent mb-2">
+                    <div className="text-4xl font-bold bg-gradient-to-r from-primary to-[#0057B8] bg-clip-text text-transparent mb-2">
                       100+
                     </div>
                     <p className="text-gray-600">Proyek Selesai</p>
                   </div>
                   <div>
-                    <div className="text-4xl font-bold bg-gradient-to-r from-[#1E90FF] to-[#0057B8] bg-clip-text text-transparent mb-2">
+                    <div className="text-4xl font-bold bg-gradient-to-r from-primary to-[#0057B8] bg-clip-text text-transparent mb-2">
                       50+
                     </div>
                     <p className="text-gray-600">Klien Puas</p>
                   </div>
                   <div>
-                    <div className="text-4xl font-bold bg-gradient-to-r from-[#1E90FF] to-[#0057B8] bg-clip-text text-transparent mb-2">
+                    <div className="text-4xl font-bold bg-gradient-to-r from-primary to-[#0057B8] bg-clip-text text-transparent mb-2">
                       5+
                     </div>
                     <p className="text-gray-600">Tahun Pengalaman</p>
                   </div>
                   <div>
-                    <div className="text-4xl font-bold bg-gradient-to-r from-[#1E90FF] to-[#0057B8] bg-clip-text text-transparent mb-2">
+                    <div className="text-4xl font-bold bg-gradient-to-r from-primary to-[#0057B8] bg-clip-text text-transparent mb-2">
                       15
                     </div>
                     <p className="text-gray-600">Anggota Tim</p>
@@ -233,13 +233,13 @@ const AboutContent = () => {
         id="team"
         className="py-20 bg-gradient-to-br from-[#E6F2FF]/30 via-[#FAFAFA] to-[#E6F2FF]/50 relative overflow-hidden"
       >
-        <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-[#1E90FF]/10 to-[#0057B8]/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-primary/10 to-[#0057B8]/10 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               Kenali{' '}
-              <span className="bg-gradient-to-r from-[#1E90FF] to-[#0057B8] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-[#0057B8] bg-clip-text text-transparent">
                 Tim Ahli Kami
               </span>
             </h2>
@@ -261,12 +261,12 @@ const AboutContent = () => {
                     alt={member.name}
                     width={1170}
                     height={1170}
-                    className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-[#E6F2FF] group-hover:border-[#1E90FF] transition-colors duration-300"
+                    className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-[#E6F2FF] group-hover:border-primary transition-colors duration-300"
                   />
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-[#1E90FF] to-[#0057B8] rounded-full"></div>
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-primary to-[#0057B8] rounded-full"></div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-[#1E90FF] font-semibold mb-3">{member.role}</p>
+                <p className="text-primary font-semibold mb-3">{member.role}</p>
                 <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
               </div>
             ))}
@@ -279,7 +279,7 @@ const AboutContent = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               Kenapa Memilih{' '}
-              <span className="bg-gradient-to-r from-[#1E90FF] to-[#0057B8] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-[#0057B8] bg-clip-text text-transparent">
                 Gawein?
               </span>
             </h2>
@@ -295,7 +295,7 @@ const AboutContent = () => {
                 key={index}
                 className="bg-[#FAFAFA]/80 backdrop-blur-sm border border-[#E6F2FF] rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:scale-105 group"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-[#1E90FF] to-[#0057B8] rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 bg-gradient-to-r from-primary to-[#0057B8] rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">{item.title}</h3>

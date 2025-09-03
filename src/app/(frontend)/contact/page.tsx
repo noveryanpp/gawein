@@ -43,7 +43,7 @@ const ContactPageContent = () => {
   return (
     <>
       <section className="pt-24 pb-16 bg-gradient-to-br from-[#FAFAFA] via-[#E6F2FF] to-[#FAFAFA] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#1E90FF]/10 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/10 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-[#0057B8]/10 to-transparent rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -52,7 +52,7 @@ const ContactPageContent = () => {
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             Mari bangun sesuatu yang{' '}
-            <span className="bg-gradient-to-r from-[#1E90FF] to-[#0057B8] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-[#0057B8] bg-clip-text text-transparent">
               Amazing bersama kami!
             </span>
           </h1>
@@ -69,13 +69,13 @@ const ContactPageContent = () => {
         id="faq"
         className="py-20 bg-gradient-to-br from-[#E6F2FF]/30 via-[#FAFAFA] to-[#E6F2FF]/50 relative overflow-hidden"
       >
-        <div className="absolute top-20 right-10 w-80 h-80 bg-gradient-to-bl from-[#1E90FF]/10 to-[#0057B8]/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-10 w-80 h-80 bg-gradient-to-bl from-primary/10 to-[#0057B8]/10 rounded-full blur-3xl"></div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               Frequently Asked{' '}
-              <span className="bg-gradient-to-r from-[#1E90FF] to-[#0057B8] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-[#0057B8] bg-clip-text text-transparent">
                 Questions
               </span>
             </h2>
@@ -99,7 +99,7 @@ const ContactPageContent = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:hello@gawe.in"
-                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-[#1E90FF] to-[#0057B8] text-white rounded-xl font-semibold hover:from-[#0057B8] hover:to-[#003d82] transition-all duration-300 min-w-[160px]"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-primary to-[#0057B8] text-white rounded-xl font-semibold hover:from-[#0057B8] hover:to-[#003d82] transition-all duration-300 min-w-[160px]"
               >
                 Email Us
               </a>
@@ -123,7 +123,7 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
   return (
     <div className="bg-[#FAFAFA]/80 backdrop-blur-sm border border-[#E6F2FF] rounded-2xl overflow-hidden">
       <button
-        className="w-full px-8 py-6 text-left focus:outline-none focus:ring-2 focus:ring-[#1E90FF]/50 hover:bg-[#E6F2FF]/50 transition-colors duration-300"
+        className="w-full px-8 py-6 text-left focus:outline-none focus:ring-2 focus:ring-primary/50 hover:bg-[#E6F2FF]/50 transition-colors duration-300"
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex items-center justify-between">
@@ -132,7 +132,7 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
             className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
           >
             <svg
-              className="w-6 h-6 text-[#1E90FF]"
+              className="w-6 h-6 text-primary"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
