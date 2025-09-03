@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
+import { Logo } from '@/components/ui/Logo'
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -32,20 +33,16 @@ export const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold bg-gradient-to-r from-[#1E90FF] to-[#0057B8] bg-clip-text text-transparent">
-              Gawe<span className="text-black">.in</span>
-            </span>
+            <Logo width={100} height={50} />
           </Link>
 
-          
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-700 hover:text-[#1E90FF] transition-colors duration-300 font-medium"
+                className="text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
               >
                 {item.label}
               </Link>
@@ -55,7 +52,6 @@ export const Navbar = () => {
             </Button>
           </div>
 
-          
           <button
             className="md:hidden p-2 rounded-lg hover:bg-[#E6F2FF] transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -80,7 +76,6 @@ export const Navbar = () => {
           </button>
         </div>
 
-        
         {isMobileMenuOpen && (
           <div className="md:hidden bg-[#FAFAFA]/95 backdrop-blur-lg border-t border-[#E6F2FF] rounded-b-2xl">
             <div className="px-4 py-6 space-y-4">
@@ -88,7 +83,7 @@ export const Navbar = () => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block text-gray-700 hover:text-[#1E90FF] transition-colors duration-300 font-medium py-2"
+                  className="block text-gray-700 hover:text-primary transition-colors duration-300 font-medium py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}

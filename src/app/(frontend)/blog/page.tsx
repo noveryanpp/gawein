@@ -197,7 +197,7 @@ const BlogContent = () => {
   return (
     <>
       <section className="pt-24 pb-16 bg-gradient-to-br from-[#FAFAFA] via-[#E6F2FF] to-[#FAFAFA] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#1E90FF]/10 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/10 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-[#0057B8]/10 to-transparent rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -206,7 +206,7 @@ const BlogContent = () => {
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             Insight & Tips{' '}
-            <span className="bg-gradient-to-r from-[#1E90FF] to-[#0057B8] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-[#0057B8] bg-clip-text text-transparent">
               Teknologi Terbaru
             </span>
           </h1>
@@ -238,13 +238,13 @@ const BlogContent = () => {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-gradient-to-r from-[#1E90FF] to-[#0057B8] text-white text-sm font-semibold rounded-full">
+                        <span className="px-3 py-1 bg-gradient-to-r from-primary to-[#0057B8] text-white text-sm font-semibold rounded-full">
                           {blog.categoryLabel}
                         </span>
                       </div>
                     </div>
                     <div className="p-8">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#1E90FF] transition-colors">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">
                         {blog.title}
                       </h3>
                       <p className="text-gray-600 mb-4 leading-relaxed">{blog.excerpt}</p>
@@ -287,7 +287,7 @@ const BlogContent = () => {
                     placeholder="Ketik kata kunci..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full px-4 py-3 pl-12 bg-white border border-[#E6F2FF] rounded-xl focus:ring-2 focus:ring-[#1E90FF]/50 focus:border-[#1E90FF] transition-colors"
+                    className="w-full px-4 py-3 pl-12 bg-white border border-[#E6F2FF] rounded-xl focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                   />
                   <svg
                     className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
@@ -310,7 +310,7 @@ const BlogContent = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-4 py-3 bg-white border border-[#E6F2FF] rounded-xl focus:ring-2 focus:ring-[#1E90FF]/50 focus:border-[#1E90FF] transition-colors"
+                  className="w-full px-4 py-3 bg-white border border-[#E6F2FF] rounded-xl focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                 >
                   {categories.map((category) => (
                     <option key={category.value} value={category.value}>
@@ -342,13 +342,13 @@ const BlogContent = () => {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute top-3 left-3">
-                        <span className="px-2 py-1 bg-gradient-to-r from-[#1E90FF] to-[#0057B8] text-white text-xs font-semibold rounded-full">
+                        <span className="px-2 py-1 bg-gradient-to-r from-primary to-[#0057B8] text-white text-xs font-semibold rounded-full">
                           {blog.categoryLabel}
                         </span>
                       </div>
                     </div>
                     <div className="p-6">
-                      <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#1E90FF] transition-colors line-clamp-2">
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors line-clamp-2">
                         {blog.title}
                       </h3>
                       <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">
@@ -394,7 +394,7 @@ const BlogContent = () => {
             </div>
           ) : (
             <div className="text-center py-16">
-              <div className="w-24 h-24 bg-gradient-to-r from-[#1E90FF] to-[#0057B8] rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-24 h-24 bg-gradient-to-r from-primary to-[#0057B8] rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg
                   className="w-12 h-12 text-white"
                   fill="none"
@@ -443,7 +443,7 @@ const BlogContent = () => {
                     onClick={() => setCurrentPage(page)}
                     className={`px-4 py-2 rounded-xl transition-colors ${
                       currentPage === page
-                        ? 'bg-gradient-to-r from-[#1E90FF] to-[#0057B8] text-white'
+                        ? 'bg-gradient-to-r from-primary to-[#0057B8] text-white'
                         : 'bg-[#FAFAFA] border border-[#E6F2FF] hover:bg-[#E6F2FF]'
                     }`}
                   >
