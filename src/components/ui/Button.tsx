@@ -14,11 +14,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           'inline-flex items-center justify-center rounded-xl font-semibold transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none backdrop-blur-sm',
           {
-            'bg-gradient-to-r from-primary to-[#0057B8] text-white hover:from-[#0057B8] hover:to-blue-800 shadow-lg hover:shadow-xl focus:ring-primary/50':
+            'bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] text-white hover:from-[#0057B8] hover:to-blue-800 shadow-lg hover:shadow-xl focus:ring-[#2EBEFA]/50':
               variant === 'primary',
-            'bg-[#FAFAFA] text-[#0057B8] ring ring-inset ring-[#E6F2FF] thover:bg-[#E6F2FF] shadow-md hover:shadow-lg focus:ring-primary/30':
+            'bg-[#FAFAFA] text-[#0057B8] ring ring-inset ring-[#E6F2FF] thover:bg-[#E6F2FF] shadow-md hover:shadow-lg focus:ring-[#2EBEFA]/30':
               variant === 'secondary',
-            'ring-2 ring-inset ring-primary text-primary bg-transparent hover:bg-primary hover:text-white focus:ring-primary/50':
+            'ring-2 ring-inset ring-[#2EBEFA] text-[#2EBEFA] bg-transparent hover:bg-[#2EBEFA] hover:text-white focus:ring-[#2EBEFA]/50':
               variant === 'outline',
           },
           {

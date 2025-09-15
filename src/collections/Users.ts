@@ -8,6 +8,5 @@ export const Users: CollectionConfig = {
   auth: true,
   fields: [
 
-
   ],
 }

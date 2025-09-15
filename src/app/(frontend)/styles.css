@@ -2,7 +2,7 @@
 
 /* Custom CSS Variables for the tech business theme */
 :root {
-  --primary-blue: #2EBEFA;
+  --[#2EBEFA]-blue: #2EBEFA;
   --secondary-light: #E6F2FF;
   --accent-blue: #0391CC;
   --dark-accent: #0057B8;
@@ -24,18 +24,24 @@ body {
 
 /* Custom animations */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(30, 144, 255, 0.3);
   }
+
   50% {
     box-shadow: 0 0 40px rgba(30, 144, 255, 0.6);
   }
@@ -45,9 +51,11 @@ body {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -110,12 +118,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, var(--primary-blue), var(--dark-accent));
+  background: linear-gradient(to bottom, var(--[#2EBEFA]-blue), var(--dark-accent));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, var(--dark-accent), var(--primary-blue));
+  background: linear-gradient(to bottom, var(--dark-accent), var(--[#2EBEFA]-blue));
 }
 
 /* Focus styles for accessibility */
@@ -125,7 +133,7 @@ body {
 
 /* Typography enhancements */
 .text-gradient {
-  background: linear-gradient(135deg, var(--primary-blue), var(--dark-accent));
+  background: linear-gradient(135deg, var(--[#2EBEFA]-blue), var(--dark-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -148,7 +156,7 @@ body {
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   :root {
-    --primary-blue: #0066CC;
+    --[#2EBEFA]-blue: #0066CC;
     --dark-accent: #003366;
   }
 }

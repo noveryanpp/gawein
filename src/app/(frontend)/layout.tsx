@@ -2,8 +2,9 @@ import React from 'react'
 import './styles.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
+import type { Metadata } from 'next'
 
-export const metadata = {
+export const metadata: Metadata = {
   description: 'Punya masalah website? Gawe.in aja, Beres!',
   title: 'Gawe.in - Jasa Pembuatan Website',
 }

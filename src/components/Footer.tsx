@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import Link from 'next/link'
 
@@ -21,7 +19,7 @@ export const Footer = () => {
     ],
     resources: [
       { name: 'Portfolio', href: '/portfolio' },
-      { name: 'Blog', href: '/blog' },
+      { name: 'Article', href: '/articles' },
       { name: 'Case Studies', href: '/case-studies' },
       { name: 'FAQ', href: '/contact#faq' },
     ],
@@ -105,7 +103,7 @@ export const Footer = () => {
                   <a
                     key={social.name}
                     href={social.href}
-                    className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-primary transition-all duration-300 hover:scale-110"
+                    className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-[#2EBEFA] transition-all duration-300 hover:scale-110"
                   >
                     {social.icon}
                   </a>

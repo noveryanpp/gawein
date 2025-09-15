@@ -15,7 +15,7 @@ export const AboutSection = () => {
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 Kami Bangun
-                <span className="block bg-gradient-to-r from-primary to-[#0057B8] bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] bg-clip-text text-transparent">
                   Masa Depan Digital
                 </span>
                 Mulai Hari Ini
@@ -29,7 +29,7 @@ export const AboutSection = () => {
 
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="w-6 h-6 bg-gradient-to-r from-primary to-[#0057B8] rounded-full flex-shrink-0 mt-1"></div>
+                <div className="w-6 h-6 bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] rounded-full flex-shrink-0 mt-1"></div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Inovasi Utama</h3>
                   <p className="text-gray-600">
@@ -39,7 +39,7 @@ export const AboutSection = () => {
                 </div>
               </div>
               <div className="flex items-start space-x-4">
-                <div className="w-6 h-6 bg-gradient-to-r from-primary to-[#0057B8] rounded-full flex-shrink-0 mt-1"></div>
+                <div className="w-6 h-6 bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] rounded-full flex-shrink-0 mt-1"></div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">
                     Pendekatan Berfokus pada Klien
@@ -51,7 +51,7 @@ export const AboutSection = () => {
                 </div>
               </div>
               <div className="flex items-start space-x-4">
-                <div className="w-6 h-6 bg-gradient-to-r from-primary to-[#0057B8] rounded-full flex-shrink-0 mt-1"></div>
+                <div className="w-6 h-6 bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] rounded-full flex-shrink-0 mt-1"></div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Jaminan Kualitas</h3>
                   <p className="text-gray-600">
@@ -67,10 +67,10 @@ export const AboutSection = () => {
           </div>
 
           <div className="relative">
-            <div className="relative bg-gradient-to-br from-primary/10 to-[#0057B8]/10 rounded-3xl p-8 backdrop-blur-sm border border-[#E6F2FF] shadow-2xl">
+            <div className="relative bg-gradient-to-br from-[#2EBEFA]/10 to-[#0057B8]/10 rounded-3xl p-8 backdrop-blur-sm border border-[#E6F2FF] shadow-2xl">
               <div className="grid grid-cols-2 gap-6">
                 <div className="bg-gradient-to-br from-[#FAFAFA] to-[#E6F2FF] rounded-2xl p-6 backdrop-blur-sm border border-[#E6F2FF]">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-[#0057B8] rounded-xl mb-4 flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] rounded-xl mb-4 flex items-center justify-center">
                     <svg
                       className="w-6 h-6 text-white"
                       fill="none"
@@ -89,7 +89,7 @@ export const AboutSection = () => {
                   <p className="text-sm text-gray-600">Solusi bisnis masa kini</p>
                 </div>
                 <div className="bg-gradient-to-br from-[#FAFAFA] to-[#E6F2FF] rounded-2xl p-6 backdrop-blur-sm border border-[#E6F2FF]">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-[#0057B8] rounded-xl mb-4 flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] rounded-xl mb-4 flex items-center justify-center">
                     <svg
                       className="w-6 h-6 text-white"
                       fill="none"
@@ -108,7 +108,7 @@ export const AboutSection = () => {
                   <p className="text-sm text-gray-600">Pengalaman pengguna adalah nomor satu</p>
                 </div>
                 <div className="bg-gradient-to-br from-[#FAFAFA] to-[#E6F2FF] rounded-2xl p-6 backdrop-blur-sm border border-[#E6F2FF]">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-[#0057B8] rounded-xl mb-4 flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] rounded-xl mb-4 flex items-center justify-center">
                     <svg
                       className="w-6 h-6 text-white"
                       fill="none"
@@ -127,7 +127,7 @@ export const AboutSection = () => {
                   <p className="text-sm text-gray-600">Super cepat dan ringan</p>
                 </div>
                 <div className="bg-gradient-to-br from-[#FAFAFA] to-[#E6F2FF] rounded-2xl p-6 backdrop-blur-sm border border-[#E6F2FF]">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-[#0057B8] rounded-xl mb-4 flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] rounded-xl mb-4 flex items-center justify-center">
                     <svg
                       className="w-6 h-6 text-white"
                       fill="none"

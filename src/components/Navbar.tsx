@@ -18,18 +18,17 @@ export const Navbar = () => {
   }, [])
 
   const navItems = [
-    { href: '/blog', label: 'Artikel' },
+    { href: '/articles', label: 'Artikel' },
     { href: '/about', label: 'Tentang Kami' },
     { href: '/contact', label: 'Kontak' },
   ]
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? 'bg-[#FAFAFA]/80 backdrop-blur-lg border-b border-[#E6F2FF] shadow-lg'
           : 'bg-transparent'
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -42,7 +41,7 @@ export const Navbar = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+                className="text-gray-700 hover:text-[#2EBEFA] transition-colors duration-300 font-medium"
               >
                 {item.label}
               </Link>
@@ -58,19 +57,16 @@ export const Navbar = () => {
           >
             <div className="w-6 h-6 relative">
               <span
-                className={`absolute block h-0.5 w-6 bg-gray-700 transform transition-all duration-300 ${
-                  isMobileMenuOpen ? 'rotate-45 top-3' : 'top-1'
-                }`}
+                className={`absolute block h-0.5 w-6 bg-gray-700 transform transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 top-3' : 'top-1'
+                  }`}
               />
               <span
-                className={`absolute block h-0.5 w-6 bg-gray-700 transform transition-all duration-300 ${
-                  isMobileMenuOpen ? 'opacity-0' : 'top-3'
-                }`}
+                className={`absolute block h-0.5 w-6 bg-gray-700 transform transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'top-3'
+                  }`}
               />
               <span
-                className={`absolute block h-0.5 w-6 bg-gray-700 transform transition-all duration-300 ${
-                  isMobileMenuOpen ? '-rotate-45 top-3' : 'top-5'
-                }`}
+                className={`absolute block h-0.5 w-6 bg-gray-700 transform transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 top-3' : 'top-5'
+                  }`}
               />
             </div>
           </button>
@@ -83,7 +79,7 @@ export const Navbar = () => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block text-gray-700 hover:text-primary transition-colors duration-300 font-medium py-2"
+                  className="block text-gray-700 hover:text-[#2EBEFA] transition-colors duration-300 font-medium py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
