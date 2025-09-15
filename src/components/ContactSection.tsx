@@ -3,7 +3,20 @@
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 
-export const ContactSection = () => {
+interface ContactSectionProps {
+  socials: {
+    text: string
+    platform: string
+    url: string
+  }[]
+}
+
+export const ContactSection = ({ socials }: ContactSectionProps) => {
+  const emails = socials.filter(social => social.platform === 'email');
+  const phones = socials.filter(social => social.platform === 'phone');
+  const addresses = socials.filter(social => social.platform === 'address');
+  const workHours = socials.filter(social => social.platform === 'working-hours');
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,7 +39,7 @@ export const ContactSection = () => {
 
   return (
     <section className="py-20 bg-gradient-to-br from-[#FAFAFA] via-[#E6F2FF]/30 to-[#FAFAFA] relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-[#2EBEFA]/10 to-transparent rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-[#0057B8]/10 to-transparent rounded-full blur-3xl"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -38,7 +51,7 @@ export const ContactSection = () => {
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
                 Yuk Mulai{' '}
-                <span className="bg-gradient-to-r from-primary to-[#0057B8] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] bg-clip-text text-transparent">
                   Proyekmu
                 </span>
                 !
@@ -51,7 +64,7 @@ export const ContactSection = () => {
 
             <div className="space-y-6">
               <div className="flex items-start space-x-4 p-4 bg-[#FAFAFA]/80 backdrop-blur-sm border border-[#E6F2FF] rounded-xl">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary to-[#0057B8] rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] rounded-xl flex items-center justify-center flex-shrink-0">
                   <svg
                     className="w-6 h-6 text-white"
                     fill="none"
@@ -68,13 +81,14 @@ export const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
-                  <p className="text-gray-600">hello@gawe.in</p>
-                  <p className="text-gray-600">support@gawe.in</p>
+                  { emails.map((email) => (
+                    <p key={email.text} className="text-gray-600">{email.text}</p>
+                  )) }
                 </div>
               </div>
 
               <div className="flex items-start space-x-4 p-4 bg-[#FAFAFA]/80 backdrop-blur-sm border border-[#E6F2FF] rounded-xl">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary to-[#0057B8] rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] rounded-xl flex items-center justify-center flex-shrink-0">
                   <svg
                     className="w-6 h-6 text-white"
                     fill="none"
@@ -91,13 +105,14 @@ export const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">No. Telepon</h4>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
-                  <p className="text-gray-600">+1 (555) 987-6543</p>
+                  { phones.map((phone) => (
+                    <p key={phone.text} className="text-gray-600">{phone.text}</p>
+                  )) }
                 </div>
               </div>
 
               <div className="flex items-start space-x-4 p-4 bg-[#FAFAFA]/80 backdrop-blur-sm border border-[#E6F2FF] rounded-xl">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary to-[#0057B8] rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] rounded-xl flex items-center justify-center flex-shrink-0">
                   <svg
                     className="w-6 h-6 text-white"
                     fill="none"
@@ -120,13 +135,14 @@ export const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">Alamat</h4>
-                  <p className="text-gray-600">123 Innovation Drive</p>
-                  <p className="text-gray-600">San Francisco, CA 94105</p>
+                  { addresses.map((address) => (
+                    <p key={address.text} className="text-gray-600">{address.text}</p>
+                  )) }
                 </div>
               </div>
 
               <div className="flex items-start space-x-4 p-4 bg-[#FAFAFA]/80 backdrop-blur-sm border border-[#E6F2FF] rounded-xl">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary to-[#0057B8] rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] rounded-xl flex items-center justify-center flex-shrink-0">
                   <svg
                     className="w-6 h-6 text-white"
                     fill="none"
@@ -143,7 +159,9 @@ export const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">Jam Kerja</h4>
-                  <p className="text-gray-600">Senin - Jumat: 09:00 - 15:00</p>
+                  { workHours.map((hour) => (
+                    <p key={hour.text} className="text-gray-600">{hour.text}</p>
+                  )) }
                 </div>
               </div>
             </div>
@@ -164,7 +182,7 @@ export const ContactSection = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-white border border-[#E6F2FF] rounded-xl focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                    className="w-full px-4 py-3 bg-white border border-[#E6F2FF] rounded-xl focus:ring-2 focus:ring-[#2EBEFA]/50 focus:border-[#2EBEFA] transition-colors"
                     placeholder="John Doe"
                   />
                 </div>
@@ -179,7 +197,7 @@ export const ContactSection = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-white border border-[#E6F2FF] rounded-xl focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                    className="w-full px-4 py-3 bg-white border border-[#E6F2FF] rounded-xl focus:ring-2 focus:ring-[#2EBEFA]/50 focus:border-[#2EBEFA] transition-colors"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -195,7 +213,7 @@ export const ContactSection = () => {
                   name="company"
                   value={formData.company}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-white border border-[#E6F2FF] rounded-xl focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                  className="w-full px-4 py-3 bg-white border border-[#E6F2FF] rounded-xl focus:ring-2 focus:ring-[#2EBEFA]/50 focus:border-[#2EBEFA] transition-colors"
                   placeholder="Nama Perusahaan (opsional)"
                 />
               </div>
@@ -211,7 +229,7 @@ export const ContactSection = () => {
                   onChange={handleInputChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 bg-white border border-[#E6F2FF] rounded-xl focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-white border border-[#E6F2FF] rounded-xl focus:ring-2 focus:ring-[#2EBEFA]/50 focus:border-[#2EBEFA] transition-colors resize-none"
                   placeholder="Ceritakan tentang proyek anda..."
                 />
               </div>

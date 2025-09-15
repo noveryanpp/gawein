@@ -2,13 +2,22 @@
 
 import React from 'react'
 import { Button } from '@/components/ui/Button'
+import { SocialLinkItem } from '@/lib/payload'
 
-export const CTASection = () => {
+interface CTASectionProps {
+  socials: SocialLinkItem[]
+}
+
+export const CTASection = ({ socials }: CTASectionProps ) => {
+  const emails = socials.filter(social => social.platform === 'email');
+  const phones = socials.filter(social => social.platform === 'phone');
+  const addresses = socials.filter(social => social.platform === 'address');
+
   return (
     <section className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-primary to-blue-500"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#2EBEFA] to-blue-500"></div>
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-primary/30 to-[#0057B8]/40"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-[#2EBEFA]/30 to-[#0057B8]/40"></div>
         <div className="absolute top-20 right-20 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-white/15 rounded-full blur-3xl"></div>
       </div>
@@ -60,7 +69,9 @@ export const CTASection = () => {
                   </svg>
                 </div>
                 <h4 className="font-semibold text-white mb-2">Email Kami</h4>
-                <p className="text-[#E6F2FF]">hello@gawe.in</p>
+                { emails.map((email, index) => (
+                  <p key={index} className="text-[#E6F2FF]">{email.text}</p>
+                ))}
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -79,7 +90,9 @@ export const CTASection = () => {
                   </svg>
                 </div>
                 <h4 className="font-semibold text-white mb-2">Hubungi Kami</h4>
-                <p className="text-[#E6F2FF]">+1 (555) 123-4567</p>
+                { phones.map((phone, index) => (
+                  <p key={index} className="text-[#E6F2FF]">{phone.text}</p>
+                ))}
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -104,7 +117,9 @@ export const CTASection = () => {
                   </svg>
                 </div>
                 <h4 className="font-semibold text-white mb-2">Kunjungi Kami</h4>
-                <p className="text-[#E6F2FF]">San Francisco, CA</p>
+                { addresses.map((address, index) => (
+                  <p key={index} className="text-[#E6F2FF]">{address.text}</p>
+                ))}
               </div>
             </div>
           </div>

@@ -309,7 +309,7 @@ DATABASE_URI=mysql://username:password@host:port/database
 
 3. **Upload test content:**
    - Add some media files
-   - Create test blog posts
+   - Create test article posts
    - Verify functionality
 
 4. **Set up monitoring:**
