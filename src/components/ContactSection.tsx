@@ -2,13 +2,10 @@
 
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/Button'
+import { SocialLinkItem } from '@/lib/payload'
 
 interface ContactSectionProps {
-  socials: {
-    text: string
-    platform: string
-    url: string
-  }[]
+  socials: SocialLinkItem[]
 }
 
 export const ContactSection = ({ socials }: ContactSectionProps) => {

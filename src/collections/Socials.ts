@@ -28,7 +28,7 @@ export const Socials: GlobalConfig = {
           admin: {
             condition: (_, siblingData) => siblingData?.platform === 'other',
           },
-          validate: (value, { siblingData }) => {
+          validate: (value: any, { siblingData }: any) => {
             if (siblingData?.platform === 'other' && !value) {
               return 'Icon is required when platform is Other'
             }
@@ -59,11 +59,11 @@ export const Socials: GlobalConfig = {
       ],
       hooks: {
         beforeChange: [
-          async ({ value }) => {
+          async ({ value }: any) => {
             if (!Array.isArray(value)) return value
             const payload = await getPayload({ config: configPromise })
             return Promise.all(
-              value.map(async (item) => {
+              value.map(async (item: any) => {
                 if (
                   item.platform &&
                   item.platform !== 'other'

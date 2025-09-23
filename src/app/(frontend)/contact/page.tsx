@@ -1,7 +1,6 @@
 import React from 'react'
 import { ContactSection } from '@/components/ContactSection'
-import { FAQItem } from '@/components/ui/FAQItem'
-import { getFaqs, type SimplifiedFaq, getSocialLinks, type SocialLinkItem } from '@/lib/payload'
+import { getSocialLinks, type SocialLinkItem } from '@/lib/payload'
 
 export default function ContactPage() {
   return (
@@ -12,7 +11,6 @@ export default function ContactPage() {
 }
 
 const ContactPageContent = async () => {
-  const faqs: SimplifiedFaq[] = await getFaqs()
   const socials: SocialLinkItem[] = await getSocialLinks()
 
   return (

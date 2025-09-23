@@ -1,6 +1,6 @@
 import { getPayload } from 'payload'
 import configPromise from '@/payload.config'
-import type { Article, Service, Portfolio, ArticlesCategory, Social, Media, Faq } from '@/payload-types'
+import type { Article, Social, Media, Service, Portfolio, Employee } from '@/payload-types'
 
 
 export interface SimplifiedArticle {
@@ -38,7 +38,7 @@ export interface SimplifiedService {
   title: string
   slug: string
   description?: string | null
-  content: any
+  content: RichText
   image: {
     url: string
     alt: string
@@ -76,13 +76,28 @@ export interface SimplifiedPortfolio {
   order: number
 }
 
+export interface RichText {
+  root: {
+    type: string;
+    children: {
+      type: string;
+      version: number;
+      [k: string]: unknown;
+    }[];
+    direction: ('ltr' | 'rtl') | null;
+    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+    indent: number;
+    version: number;
+  };
+  [k: string]: unknown;
+}
 
 export interface FullPortfolio {
   id: number
   title: string
   slug: string
   description?: string | null
-  content: any
+  content: RichText
   image: {
     url: string
     alt: string
@@ -121,11 +136,27 @@ export interface SimplifiedEmployee {
   name: string
   position: string
   bio?: string | null
-  image?: Media | null
+  image: {
+    url: string
+    alt: string
+  }
 }
 
 export interface SocialLinkItem {
-  platform: 'facebook' | 'twitter' | 'instagram' | 'linkedin' | 'github' | 'youtube' | 'tiktok' | 'reddit' | 'whatsapp' | 'phone' | 'email' | 'location' | 'other'
+  platform: 'facebook'
+    | 'twitter'
+    | 'instagram'
+    | 'linkedin'
+    | 'github'
+    | 'youtube'
+    | 'tiktok'
+    | 'reddit'
+    | 'whatsapp'
+    | 'phone'
+    | 'email'
+    | 'working-hours'
+    | 'address'
+    | 'other'
   url?: string
   text: string
   icon?: {
@@ -136,13 +167,21 @@ export interface SocialLinkItem {
 
 export interface FooterData {
   socials: SocialLinkItem[]
-  services: SimplifiedService[]
+  services: {
+    id: number
+    title: string
+    slug: string
+    order: number
+  }[]
 }
 
 export interface HomePageData {
   services: SimplifiedService[]
   portfolios: SimplifiedPortfolio[]
-  socials: SocialLinkItem[]
+  socials: {
+    platform: string,
+    text: string
+  }[]
   faqs: SimplifiedFaq[]
 }
 
@@ -153,8 +192,51 @@ export interface ArticlePageData {
 }
 
 export interface ArticlePostData {
-  article: Article
+  thumbnail: Media
+  article: Omit<Article, 'thumbnail'> & { thumbnail: Media }
   relatedArticles: Pick<Article, 'id' | 'title' | 'thumbnail' | 'slug' | 'readingTime' | 'author' | 'createdAt'>[]
+}
+
+export interface SingleArticleData {
+  article: {
+    id: number
+    title: string
+    description?: string | null
+    content: RichText
+    thumbnail: {
+      url: string
+      alt: string
+    }
+    author: {
+      name: string
+    }
+    readingTime: number
+    slug: string
+    createdAt: string
+    categories: {
+      id: number
+      name: string
+      slug: string
+    }[]
+    tags: {
+      id: number
+      name: string
+    }[]
+  }
+  relatedArticles: {
+    id: number
+    title: string
+    thumbnail: {
+      url: string
+      alt: string
+    } | null
+    slug: string
+    readingTime: number
+    author: {
+      name: string
+    }
+    createdAt: string
+  }[]
 }
 
 export interface ServicesPageData {
@@ -163,7 +245,11 @@ export interface ServicesPageData {
 
 export interface PortfolioPageData {
   portfolios: SimplifiedPortfolio[]
-  services: SimplifiedCategory[]
+  services: {
+    id: number
+    title: string
+    slug: string
+  }[]
   totalPages: number
 }
 
@@ -172,7 +258,7 @@ export interface SinglePortfolioData {
 }
 
 
-function transformServiceForClient(service: any): SimplifiedService {
+function transformServiceForClient(service: Service): SimplifiedService {
   return {
     id: service.id,
     title: service.title,
@@ -190,7 +276,7 @@ function transformServiceForClient(service: any): SimplifiedService {
   }
 }
 
-function transformPortfolioForClient(portfolio: any): SimplifiedPortfolio {
+function transformPortfolioForClient(portfolio: Portfolio): SimplifiedPortfolio {
   return {
     id: portfolio.id,
     title: portfolio.title,
@@ -218,7 +304,7 @@ function transformPortfolioForClient(portfolio: any): SimplifiedPortfolio {
   }
 }
 
-function transformFullPortfolioForClient(portfolio: any): FullPortfolio {
+function transformFullPortfolioForClient(portfolio: Portfolio): FullPortfolio {
   return {
     id: portfolio.id,
     title: portfolio.title,
@@ -255,7 +341,7 @@ function transformFullPortfolioForClient(portfolio: any): FullPortfolio {
   }
 }
 
-function transformArticleForClient(article: any): SimplifiedArticle {
+function transformArticleForClient(article: Article): SimplifiedArticle {
   return {
     id: article.id,
     title: article.title,
@@ -264,7 +350,7 @@ function transformArticleForClient(article: any): SimplifiedArticle {
       url: (typeof article.thumbnail === 'object' ? article.thumbnail.url : '') || '',
       alt: (typeof article.thumbnail === 'object' ? article.thumbnail.alt : '') || article.title
     } : null,
-    author: typeof article.author === 'object' ? article.author.name : article.author,
+    author: typeof article.author === 'object' ? article.author.name : 'Author',
     readingTime: article.readingTime,
     slug: article.slug,
     createdAt: article.createdAt,
@@ -396,10 +482,10 @@ export async function getHomePageData(): Promise<HomePageData> {
   return {
     services: servicesRes.docs.map(transformServiceForClient),
     portfolios: portfoliosRes.docs.map(transformPortfolioForClient),
-    socials: filteredLinks.map((link: SocialLinkItem) => ({
+    socials: filteredLinks.map((link: any) => ({
       platform: link.platform,
       text: link.text
-    })) as Social['links'],
+    })),
     faqs: faqsRes
   }
 }
@@ -618,7 +704,7 @@ export async function getArticlePageData(page: number = 1, limit: number = 6, ca
   }
 }
 
-export async function getArticlePostData(slug: string): Promise<ArticlePostData | null> {
+export async function getArticlePostData(slug: string): Promise<SingleArticleData | null> {
   const payload = await getPayload({ config: configPromise })
 
   const articleRes = await payload.find({
@@ -637,7 +723,6 @@ export async function getArticlePostData(slug: string): Promise<ArticlePostData 
   }
 
   const article = articleRes.docs[0]
-
 
   const categoryIds = article.categories?.map((cat: any) =>
     typeof cat === 'object' ? cat.id : cat
@@ -674,8 +759,45 @@ export async function getArticlePostData(slug: string): Promise<ArticlePostData 
   })
 
   return {
-    article,
-    relatedArticles: relatedArticlesRes.docs
+    article: {
+      id: article.id,
+      title: article.title,
+      description: article.description,
+      content: article.content,
+      thumbnail: {
+        url: (typeof article.thumbnail === 'object' ? article.thumbnail.url : '') || '',
+        alt: (typeof article.thumbnail === 'object' ? article.thumbnail.alt : '') || article.title
+      },
+      author: {
+        name: typeof article.author === 'object' ? article.author.name : 'Author'
+      },
+      readingTime: article.readingTime,
+      slug: article.slug,
+      createdAt: article.createdAt,
+      categories: article.categories?.map((cat: any) => ({
+        id: typeof cat === 'object' ? cat.id : cat,
+        name: typeof cat === 'object' ? cat.name : "Unknown",
+        slug: typeof cat === 'object' ? cat.slug : 'unknown'
+      })) || [],
+      tags: article.tags?.map((tag: any) => ({
+        id: typeof tag === 'object' ? tag.id : tag,
+        name: typeof tag === 'object' ? tag.name : 'Unknown'
+      })) || []
+    },
+    relatedArticles: relatedArticlesRes.docs.map(relatedArticle => ({
+      id: relatedArticle.id,
+      title: relatedArticle.title,
+      thumbnail: relatedArticle.thumbnail ? {
+        url: (typeof relatedArticle.thumbnail === 'object' ? relatedArticle.thumbnail.url : '') || '',
+        alt: (typeof relatedArticle.thumbnail === 'object' ? relatedArticle.thumbnail.alt : '') || relatedArticle.title
+      } : null,
+      slug: relatedArticle.slug,
+      readingTime: relatedArticle.readingTime,
+      author: {
+        name: typeof relatedArticle.author === 'object' ? relatedArticle.author.name : 'Author'
+      },
+      createdAt: relatedArticle.createdAt
+    }))
   }
 }
 
@@ -725,7 +847,7 @@ export async function getFaqs(): Promise<SimplifiedFaq[]> {
       limit: 0
     })
 
-    return faqs.docs.map((faq: any) => ({
+    return faqs.docs.map((faq: SimplifiedFaq) => ({
       question: faq.question,
       answer: faq.answer
     }))
@@ -751,7 +873,16 @@ export async function getEmployees(): Promise<SimplifiedEmployee[]> {
       limit: 0
     })
 
-    return employees.docs
+    return employees.docs.map((emp: any) => ({
+      id: emp.id,
+      name: emp.name,
+      position: emp.position,
+      bio: emp.bio,
+      image: emp.image ? {
+        url: (typeof emp.image === 'object' ? emp.image.url : '') || '',
+        alt: (typeof emp.image === 'object' ? emp.image.alt : '') || emp.name
+      } : { url: '', alt: emp.name }
+    }))
   } catch (error) {
     console.error('Error fetching employees:', error)
     return []

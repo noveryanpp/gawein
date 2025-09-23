@@ -2,11 +2,11 @@
 
 import React from 'react'
 import { Button } from '@/components/ui/Button'
-import { SocialLinkItem } from '@/lib/payload'
+import { HomePageData } from '@/lib/payload'
 import Link from 'next/link'
 
 interface CTASectionProps {
-  socials: SocialLinkItem[]
+  socials: HomePageData['socials']
 }
 
 export const CTASection = ({ socials }: CTASectionProps ) => {

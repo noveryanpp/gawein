@@ -2,21 +2,11 @@
 
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-
-interface PortfolioImage {
-  id: string
-  url: string
-  alt: string
-}
-
-interface GalleryItem {
-  image: PortfolioImage
-  caption?: string | null
-}
+import { FullPortfolio } from '@/lib/payload'
 
 interface PortfolioGalleryProps {
-  gallery: GalleryItem[]
-  mainImage?: PortfolioImage
+  gallery: FullPortfolio['gallery']
+  mainImage?: FullPortfolio['image']
 }
 
 export const PortfolioGallery = ({ gallery, mainImage }: PortfolioGalleryProps) => {
@@ -119,7 +109,7 @@ export const PortfolioGallery = ({ gallery, mainImage }: PortfolioGalleryProps) 
               <div className="flex gap-4 mx-auto">
                 {allImages.map((item, index) => (
                   <button
-                    key={`${item.image.id}-${index}`}
+                    key={index}
                     onClick={() => setSelectedIndex(index)}
                     className={`relative flex-shrink-0 w-24 h-16 sm:w-32 sm:h-20 rounded-xl overflow-hidden border-2 transition-all duration-300 ${
                       index === selectedIndex

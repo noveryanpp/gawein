@@ -222,7 +222,7 @@ const AboutContent = async () => {
               >
                 <div className="relative mb-6">
                   <Image
-                    src={member.image?.url}
+                    src={member.image.url}
                     alt={member.name}
                     width={1170}
                     height={1170}

@@ -9,7 +9,11 @@ import type { SimplifiedPortfolio, SimplifiedCategory } from '@/lib/payload'
 
 interface PortfolioContentProps {
   portfolios: SimplifiedPortfolio[]
-  services: SimplifiedCategory[]
+  services: {
+    id: number
+    title: string
+    slug: string
+  }[]
   totalPages: number
   currentPage: number
   selectedService: string
@@ -167,7 +171,7 @@ export const PortfolioContent = ({
                 </span></span>
               )}
               {searchQuery && (
-                <span> untuk pencarian "<span className="font-semibold text-[#0057B8]">{searchQuery}</span>"</span>
+                <span> untuk pencarian &ldquo;<span className="font-semibold text-[#0057B8]">{searchQuery}</span>&ldquo;</span>
               )}
             </p>
           </div>
