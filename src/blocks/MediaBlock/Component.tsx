@@ -5,13 +5,13 @@ import Image from 'next/image'
 
 interface MediaBlockProps {
   media: {
-    id: string
+    id: number
     url: string
     alt?: string
     filename?: string
     width?: number
     height?: number
-    caption?: any
+    caption?: string | null | undefined
   }
   className?: string
 }

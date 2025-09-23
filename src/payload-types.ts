@@ -215,7 +215,7 @@ export interface Employee {
   name: string;
   position: string;
   bio?: string | null;
-  image?: (number | null) | Media;
+  image: number | Media;
   order?: number | null;
   updatedAt: string;
   createdAt: string;

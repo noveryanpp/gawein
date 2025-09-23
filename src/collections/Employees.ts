@@ -24,7 +24,8 @@ export const Employees: CollectionConfig = {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
-      defaultValue: 1
+      defaultValue: 1,
+      required: true,
     },
     {
       name: 'order',

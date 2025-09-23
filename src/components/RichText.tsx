@@ -4,9 +4,24 @@
 import React from 'react'
 import { cn } from '@/lib/utils'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
+import { Media } from '@/payload-types'
 
 interface RichTextProps {
-  content: any
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  }
   className?: string
   enableGutter?: boolean
 }
@@ -65,8 +80,9 @@ interface ListItemNode {
 interface MediaBlockNode {
   type: 'block'
   fields: {
+    caption: string
     blockType: 'mediaBlock'
-    media: any
+    media: Media
   }
   version?: number
 }
@@ -154,10 +170,23 @@ const renderNode = (node: RichTextNode, index: number): React.ReactNode => {
 
     case 'block':
       if (node.fields.blockType === 'mediaBlock') {
+        const media = node.fields.media
+        if (!media.url) {
+          return null
+        }
+
         return (
           <MediaBlock
             key={index}
-            media={{...node.fields.media, caption: node.fields.caption}}
+            media={{
+              id: media.id,
+              url: media.url,
+              alt: media.alt || undefined,
+              filename: media.filename || undefined,
+              width: media.width || undefined,
+              height: media.height || undefined,
+              caption: node.fields.caption
+            }}
             className="my-8"
           />
         )
@@ -178,7 +207,7 @@ export const RichText: React.FC<RichTextProps> = ({
     return null
   }
 
-  const rootNode = content.root as RootNode
+  const rootNode = content.root as unknown as RootNode
 
   return (
     <div
