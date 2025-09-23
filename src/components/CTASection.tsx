@@ -3,6 +3,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/Button'
 import { SocialLinkItem } from '@/lib/payload'
+import Link from 'next/link'
 
 interface CTASectionProps {
   socials: SocialLinkItem[]
@@ -24,7 +25,7 @@ export const CTASection = ({ socials }: CTASectionProps ) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center text-white">
-          <div className="max-w-4xl mx-auto space-y-8">
+          <div className="max-w-7xl mx-auto space-y-8">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
               Siap Ubah
               <span className="text-[#E6F2FF]"> Bisnismu ke Dunia Digital?</span>
@@ -35,20 +36,15 @@ export const CTASection = ({ socials }: CTASectionProps ) => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="min-w-[200px] bg-white text-[#0057B8] hover:bg-[#E6F2FF] border-0"
-              >
-                Mulai Proyekmu
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="min-w-[200px] border-white text-white hover:bg-white hover:text-[#0057B8]"
-              >
-                Jadwalkan Panggilan
-              </Button>
+              <Link href={'/contact'}>
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="min-w-[200px] bg-white text-[#0057B8] hover:bg-[#E6F2FF] border-0"
+                >
+                  Mulai Proyekmu
+                </Button>
+              </Link>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 max-w-3xl mx-auto">

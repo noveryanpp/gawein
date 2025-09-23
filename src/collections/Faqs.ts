@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload'
 export const Faqs: CollectionConfig = {
   slug: 'faqs',
   admin: {
-    useAsTitle: 'question', // or your tag field
+    useAsTitle: 'question',
   },
   fields: [
     {

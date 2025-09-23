@@ -249,9 +249,42 @@ export interface Tag {
 export interface Portfolio {
   id: number;
   title: string;
+  slug: string;
   description?: string | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   image: number | Media;
+  gallery?:
+    | {
+        image: number | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  service: number | Service;
+  tags?: (number | Tag)[] | null;
   url?: string | null;
+  client?: string | null;
+  completedAt?: string | null;
+  technologies?:
+    | {
+        technology: string;
+        id?: string | null;
+      }[]
+    | null;
   order: number;
   updatedAt: string;
   createdAt: string;
@@ -263,7 +296,23 @@ export interface Portfolio {
 export interface Service {
   id: number;
   title: string;
+  slug: string;
   description?: string | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   image: number | Media;
   features?:
     | {
@@ -271,6 +320,8 @@ export interface Service {
         id?: string | null;
       }[]
     | null;
+  ctaText?: string | null;
+  ctaLink?: string | null;
   order: number;
   updatedAt: string;
   createdAt: string;
@@ -435,9 +486,28 @@ export interface ArticlesSelect<T extends boolean = true> {
  */
 export interface PortfoliosSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   description?: T;
+  content?: T;
   image?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        id?: T;
+      };
+  service?: T;
+  tags?: T;
   url?: T;
+  client?: T;
+  completedAt?: T;
+  technologies?:
+    | T
+    | {
+        technology?: T;
+        id?: T;
+      };
   order?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -459,7 +529,9 @@ export interface ArticlesCategoriesSelect<T extends boolean = true> {
  */
 export interface ServicesSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   description?: T;
+  content?: T;
   image?: T;
   features?:
     | T
@@ -467,6 +539,8 @@ export interface ServicesSelect<T extends boolean = true> {
         feature?: T;
         id?: T;
       };
+  ctaText?: T;
+  ctaLink?: T;
   order?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -78,11 +78,11 @@ export const Articles: CollectionConfig = {
     {
       name: 'tags',
       type: 'relationship',
-      relationTo: 'tags', // your tags collection
+      relationTo: 'tags',
       hasMany: true,
       required: false,
       admin: {
-        allowCreate: true, // enables creating new tags inline
+        allowCreate: true,
       },
     }
   ],

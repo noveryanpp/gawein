@@ -5,6 +5,7 @@ import { ServicesSection } from '@/components/ServicesSection'
 import { PortfolioSection } from '@/components/PortfolioSection'
 import { CTASection } from '@/components/CTASection'
 import { getHomePageData } from '@/lib/payload'
+import { FAQSection } from '@/components/FAQSection'
 
 export default function HomePage() {
 
@@ -16,14 +17,14 @@ export default function HomePage() {
 }
 
 const HomePageContent = async () => {
-  const { services, portfolios, socials } = await getHomePageData()
-  console.log('Social Links:', socials)
+  const { services, portfolios, socials, faqs } = await getHomePageData()
   return (
     <>
       <HeroSection />
       <AboutSection />
       <ServicesSection services={services} />
-      <PortfolioSection portfolios={portfolios}/>
+      <PortfolioSection portfolios={portfolios} />
+      <FAQSection faqs={faqs} />
       <CTASection socials={socials}/>
     </>
   )

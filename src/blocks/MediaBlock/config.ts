@@ -1,4 +1,4 @@
-// src/blocks/MediaBlock/config.ts
+
 import type { Block } from 'payload'
 
 export const MediaBlock: Block = {
