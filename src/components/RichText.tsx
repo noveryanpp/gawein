@@ -1,4 +1,4 @@
-// src/components/RichText/index.tsx
+
 'use client'
 
 import React from 'react'
@@ -85,18 +85,18 @@ interface RootNode {
 const renderTextNode = (node: TextNode, index: number): React.ReactNode => {
   let content: React.ReactNode = node.text
 
-  // Handle text formatting based on format flags
+
   if (node.format) {
-    if (node.format & 1) { // Bold
+    if (node.format & 1) {
       content = <strong>{content}</strong>
     }
-    if (node.format & 2) { // Italic
+    if (node.format & 2) {
       content = <em>{content}</em>
     }
-    if (node.format & 4) { // Strikethrough
+    if (node.format & 4) {
       content = <s>{content}</s>
     }
-    if (node.format & 8) { // Underline
+    if (node.format & 8) {
       content = <u>{content}</u>
     }
   }

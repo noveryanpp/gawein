@@ -24,6 +24,46 @@ export const ContactSection = ({ socials }: ContactSectionProps) => {
     message: '',
   })
 
+
+  const parsePhoneNumber = (phoneNumber: string): string => {
+
+    let cleaned = phoneNumber.replace(/\D/g, '');
+
+
+    if (cleaned.startsWith('08')) {
+
+      cleaned = '62' + cleaned.substring(1);
+    } else if (cleaned.startsWith('62')) {
+
+      cleaned = cleaned;
+    } else if (cleaned.startsWith('8')) {
+
+      cleaned = '62' + cleaned;
+    }
+
+    return cleaned;
+  }
+
+
+  const formatWhatsAppMessage = (data: typeof formData): string => {
+    let message = `Halo, Saya ${data.name}`;
+
+    if (data.email) {
+      message += `%0AEmail: ${data.email}`;
+    }
+
+    if (data.company) {
+      message += `%0APerusahaan: ${data.company}`;
+    }
+
+    message += `%0A%0APesan:%0A${data.message}`;
+
+
+    return encodeURIComponent(message)
+      .replace(/%0A/g, '%0A')
+      .replace(/%20/g, '%20');
+  }
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -34,7 +74,34 @@ export const ContactSection = ({ socials }: ContactSectionProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
-    console.log('Form submitted:', formData)
+
+    if (!formData.name || !formData.message) {
+      alert('Nama dan pesan wajib diisi!');
+      return;
+    }
+
+
+    if (phones.length === 0) {
+      alert('Nomor WhatsApp tidak tersedia!');
+      return;
+    }
+
+    const phoneNumber = parsePhoneNumber(phones[0].text);
+    const message = formatWhatsAppMessage(formData);
+
+
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+
+
+    window.open(whatsappUrl, '_blank');
+
+
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      message: '',
+    });
   }
 
   return (
@@ -167,7 +234,7 @@ export const ContactSection = ({ socials }: ContactSectionProps) => {
             </div>
           </div>
 
-          <div className="bg-[#FAFAFA]/80 backdrop-blur-sm border border-[#E6F2FF] rounded-3xl p-8 shadow-2xl">
+          <div className="bg-[#FAFAFA]/80 backdrop-blur-sm border border-[#E6F2FF] rounded-3xl p-8 shadow-2xl text-gray-700">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Kirim pesan</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

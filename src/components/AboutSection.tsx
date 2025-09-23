@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Button } from '@/components/ui/Button'
+import Link from 'next/link'
 
 export const AboutSection = () => {
   return (
@@ -61,9 +62,11 @@ export const AboutSection = () => {
               </div>
             </div>
 
-            <Button size="lg" variant="primary">
-              Kenali Kami Lebih Dekat
-            </Button>
+            <Link href={'/about'}>
+              <Button size="lg" variant="primary">
+                Kenali Kami Lebih Dekat
+              </Button>
+            </Link>
           </div>
 
           <div className="relative">

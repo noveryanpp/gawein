@@ -137,7 +137,7 @@ const AboutContent = async () => {
                 <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Kisah Kami</h2>
                 <div className="space-y-6 text-gray-600 leading-relaxed">
                   <p>
-                    Didirikan pada tahun 2019, Gawein muncul dari sebuah keyakinan sederhana:
+                    Didirikan pada tahun 2025, Gawein muncul dari sebuah keyakinan sederhana:
                     teknologi harus memberdayakan bisnis, bukan mempersulitnya. Para pendiri kami,
                     yang berasal dari latar belakang yang beragam dalam rekayasa perangkat lunak,
                     desain, dan strategi bisnis, menyadari adanya kesenjangan antara teknologi

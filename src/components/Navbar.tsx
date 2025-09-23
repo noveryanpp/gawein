@@ -13,11 +13,16 @@ export const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
     }
+    if (window.scrollY > 20) {
+      setIsScrolled(true)
+    }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const navItems = [
+    { href: '/services', label: 'Layanan' },
+    { href: '/portfolio', label: 'Portfolio' },
     { href: '/articles', label: 'Artikel' },
     { href: '/about', label: 'Tentang Kami' },
     { href: '/contact', label: 'Kontak' },
@@ -46,9 +51,11 @@ export const Navbar = () => {
                 {item.label}
               </Link>
             ))}
-            <Button size="sm" variant="primary">
-              Mulai Sekarang
-            </Button>
+            <Link href={'/contact'} >
+              <Button size="sm" variant="primary">
+                Mulai Sekarang
+              </Button>
+            </Link>
           </div>
 
           <button
@@ -85,11 +92,11 @@ export const Navbar = () => {
                   {item.label}
                 </Link>
               ))}
-              <div className="pt-4">
+              <Link className="pt-4" href={'/contact'}>
                 <Button size="md" variant="primary" className="w-full">
                   Mulai Sekarang
                 </Button>
-              </div>
+              </Link>
             </div>
           </div>
         )}

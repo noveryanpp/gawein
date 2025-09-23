@@ -4,13 +4,14 @@ import React from 'react'
 import { Button } from '@/components/ui/Button'
 import Image from 'next/image'
 import type { SimplifiedService } from '@/lib/payload'
+import Link from 'next/link'
 
 interface ServicesSectionProps {
   services: SimplifiedService[]
 }
 
 export const ServicesSection = ({ services }: ServicesSectionProps) => {
-  // Default icon component for services without specific images
+
   const DefaultServiceIcon = () => (
     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path
@@ -49,54 +50,44 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service) => (
-            <div
-              key={service.id}
-              className="group bg-[#FAFAFA]/80 backdrop-blur-sm border border-[#E6F2FF] p-8 rounded-3xl hover:shadow-2xl transition-all duration-500 hover:scale-105"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300 mr-4">
-                  {service.image?.url ? (
-                    <Image
-                      src={service.image.url}
-                      alt={service.image.alt}
-                      width={32}
-                      height={32}
-                      className="w-8 h-8 object-contain"
-                    />
-                  ) : (
-                    <DefaultServiceIcon />
-                  )}
+            <Link key={service.id} href={'/services#' + service.slug} >
+              <div
+                className="group cursor-pointer bg-[#FAFAFA]/80 backdrop-blur-sm border border-[#E6F2FF] p-8 rounded-3xl hover:shadow-2xl transition-all duration-500 hover:scale-105"
+              >
+                <div className="flex items-center mb-6">
+                  <div className="w-8 h-8 bg-gradient-to-r from-[#2EBEFA] to-[#0057B8] rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300 mr-4">
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#2EBEFA] transition-colors">
+                    {service.title}
+                  </h3>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#2EBEFA] transition-colors">
-                  {service.title}
-                </h3>
+
+                <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+
+                {service.features && service.features.length > 0 && (
+                  <ul className="space-y-3">
+                    {service.features.map((featureItem, index) => (
+                      <li key={index} className="flex items-center text-sm text-gray-700">
+                        <svg
+                          className="w-4 h-4 text-[#2EBEFA] mr-3 flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        {featureItem.feature}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
-
-              <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-
-              {service.features && service.features.length > 0 && (
-                <ul className="space-y-3">
-                  {service.features.map((feature, index) => (
-                    <li key={index} className="flex items-center text-sm text-gray-700">
-                      <svg
-                        className="w-4 h-4 text-[#2EBEFA] mr-3 flex-shrink-0"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -104,7 +95,9 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
           <p className="text-lg text-gray-600 mb-8">
             Punya proyek dalam pikiran? Mari diskusikan solusi terbaik untuk bisnismu.
           </p>
-          <Button size="lg">Konsultasi Gratis</Button>
+          <Link href={'/contact'}>
+            <Button size="lg">Konsultasi Gratis</Button>
+          </Link>
         </div>
       </div>
     </section>

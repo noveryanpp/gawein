@@ -1,4 +1,5 @@
-import type { GlobalConfig } from 'payload'
+import { getPayload, type GlobalConfig } from 'payload'
+import configPromise from '@/payload.config'
 
 export const Socials: GlobalConfig = {
   slug: 'socials',
@@ -23,6 +24,16 @@ export const Socials: GlobalConfig = {
           name: 'icon',
           type: 'upload',
           relationTo: 'media',
+          required: true,
+          admin: {
+            condition: (_, siblingData) => siblingData?.platform === 'other',
+          },
+          validate: (value, { siblingData }) => {
+            if (siblingData?.platform === 'other' && !value) {
+              return 'Icon is required when platform is Other'
+            }
+            return true
+          },
         },
         {
           name: 'platform',
@@ -45,7 +56,33 @@ export const Socials: GlobalConfig = {
           ],
           required: true,
         },
-      ]
+      ],
+      hooks: {
+        beforeChange: [
+          async ({ value }) => {
+            if (!Array.isArray(value)) return value
+            const payload = await getPayload({ config: configPromise })
+            return Promise.all(
+              value.map(async (item) => {
+                if (
+                  item.platform &&
+                  item.platform !== 'other'
+                ) {
+                  const media = await payload.find({
+                    collection: 'media',
+                    where: { filename: { equals: (item.platform + '.svg') } },
+                    limit: 1,
+                  })
+                  if (media.docs.length > 0) {
+                    item.icon = media.docs[0].id
+                  }
+                }
+                return item
+              })
+            )
+          },
+        ],
+      },
     },
   ],
 }

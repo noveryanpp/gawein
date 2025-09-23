@@ -15,9 +15,23 @@ export const Services: CollectionConfig = {
       required: true,
     },
     {
+      name: 'slug',
+      type: 'text',
+      required: true,
+      unique: true,
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'description',
       type: 'textarea',
       required: false,
+    },
+    {
+      name: 'content',
+      type: 'richText',
+      required: true,
     },
     {
       name: 'image',
@@ -36,6 +50,18 @@ export const Services: CollectionConfig = {
           required: true
         }
       ]
+    },
+    {
+      name: 'ctaText',
+      type: 'text',
+      required: false,
+      defaultValue: 'Konsultasi Gratis',
+    },
+    {
+      name: 'ctaLink',
+      type: 'text',
+      required: false,
+      defaultValue: '/contact',
     },
     {
       name: 'order',

@@ -185,7 +185,7 @@ export const ArticleContent = ({ articles, categories, totalPages, currentPage, 
                         {article.description}
                       </p>
 
-                      {/* Display tags if available */}
+                      {/* Display tags */}
                       {article.tags && article.tags.length > 0 && (
                         <div className="flex flex-wrap gap-1 mb-4">
                           {article.tags.slice(0, 3).map((tag) => (

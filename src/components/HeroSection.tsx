@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Button } from '@/components/ui/Button'
+import Link from 'next/link'
 
 export const HeroSection = () => {
   return (
@@ -33,20 +34,24 @@ export const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button size="lg" variant="primary" className="min-w-[200px]">
-              Mulai Proyekmu
-            </Button>
-            <Button size="lg" variant="outline" className="min-w-[200px]">
-              Lihat Hasil Kerja Kami
-            </Button>
+            <Link href={'/contact'}>
+              <Button size="lg" variant="primary" className="min-w-[200px]">
+                Mulai Proyekmu
+              </Button>
+            </Link>
+            <Link href={'/portfolio'}>
+              <Button size="lg" variant="outline" className="min-w-[200px]">
+                Lihat Hasil Kerja Kami
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-[#2EBEFA] rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-[#2EBEFA] rounded-full mt-2 animate-pulse"></div>
-        </div>
+      <div className="absolute rotate-180 bottom-8 text-[#2ebefa] left-1/2 transform -translate-x-1/2 animate-pulse">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" className="animate-bounce">
+          <path fill="#084eb8" d="M9.462 21.192V19.02H6.385q-.403 0-.565-.363q-.162-.364.127-.66l5.456-5.838q.237-.254.593-.254t.6.254l5.455 5.838q.289.296.127.66q-.162.363-.565.363h-3.075v2.173q0 .344-.233.576t-.575.232h-3.462q-.343 0-.575-.232t-.233-.576m1-.173h3.077v-2.192q0-.343.233-.576t.575-.232h2.338l-4.684-5l-4.684 5h2.338q.343 0 .575.233t.233.575zM12 8.25l-5.486 5.867q-.074.07-.173.111t-.196.041q-.32 0-.457-.296q-.138-.296.095-.546l5.62-6.02q.238-.253.595-.253t.598.254l5.621 6.019q.214.25.096.546q-.119.296-.46.296q-.105 0-.2-.035t-.166-.117zm0-4.75L6.514 9.367q-.074.07-.173.111t-.196.041q-.32 0-.457-.296q-.138-.296.095-.546l5.62-6.02q.238-.253.595-.253t.598.254l5.621 6.019q.214.25.096.546q-.119.296-.46.296q-.105 0-.2-.035t-.166-.117zm0 14.52"/>
+        </svg>
       </div>
     </section>
   )

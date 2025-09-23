@@ -56,9 +56,9 @@ export const PortfolioSection = ({ portfolios }: PortfolioSectionProps) => {
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  {portfolio.url && (
+                  {portfolio.slug && (
                     <a
-                      href={portfolio.url}
+                      href={'/portfolio/' + portfolio.slug}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center px-4 py-2 bg-white/90 backdrop-blur-sm text-[#0057B8] rounded-lg text-sm font-semibold hover:bg-white transition-colors"
@@ -89,9 +89,11 @@ export const PortfolioSection = ({ portfolios }: PortfolioSectionProps) => {
           <p className="text-lg text-gray-600 mb-8">
             Punya ide project yang menarik? Mari kita diskusikan dan wujudkan bersama!
           </p>
-          <Button size="lg">
-            Lihat Semua Portfolio
-          </Button>
+          <Link href={'/portfolio'} >
+            <Button size="lg">
+              Lihat Semua Portfolio
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

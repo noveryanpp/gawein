@@ -2,7 +2,7 @@ import { getPayload } from 'payload'
 import configPromise from '@/payload.config'
 import type { Article, Service, Portfolio, ArticlesCategory, Social, Media, Faq } from '@/payload-types'
 
-// Simplified types for client components (avoiding complex nested objects)
+
 export interface SimplifiedArticle {
   id: number
   title: string
@@ -32,26 +32,82 @@ export interface SimplifiedCategory {
   slug: string
 }
 
+
 export interface SimplifiedService {
   id: number
   title: string
+  slug: string
   description?: string | null
+  content: any
   image: {
     url: string
     alt: string
   } | null
-  features: string[]
+  features: { feature: string }[]
+  ctaText?: string | null
+  ctaLink?: string | null
   order: number
 }
+
 
 export interface SimplifiedPortfolio {
   id: number
   title: string
+  slug: string
   description?: string | null
   image: {
     url: string
     alt: string
   } | null
+  service: {
+    id: number
+    title: string
+    slug: string
+  }
+  tags: {
+    id: number
+    name: string
+    slug: string
+  }[]
+  client?: string | null
+  completedAt?: string | null
+  technologies: { technology: string }[]
+  url?: string | null
+  order: number
+}
+
+
+export interface FullPortfolio {
+  id: number
+  title: string
+  slug: string
+  description?: string | null
+  content: any
+  image: {
+    url: string
+    alt: string
+  } | null
+  gallery: {
+    image: {
+      id: number
+      url: string
+      alt: string
+    }
+    caption?: string | null
+  }[]
+  service: {
+    id: number
+    title: string
+    slug: string
+  }
+  tags: {
+    id: number
+    name: string
+    slug: string
+  }[]
+  client?: string | null
+  completedAt?: string | null
+  technologies: { technology: string }[]
   url?: string | null
   order: number
 }
@@ -69,16 +125,25 @@ export interface SimplifiedEmployee {
 }
 
 export interface SocialLinkItem {
-  platform: 'facebook' | 'twitter' | 'instagram' | 'linkedin' | 'github' | 'youtube' | 'tiktok' | 'reddit' | 'whatsapp' | 'phone' | 'email' | 'other'
+  platform: 'facebook' | 'twitter' | 'instagram' | 'linkedin' | 'github' | 'youtube' | 'tiktok' | 'reddit' | 'whatsapp' | 'phone' | 'email' | 'location' | 'other'
   url?: string
   text: string
+  icon?: {
+    url: string
+    alt: string
+  } | null
 }
 
-// Type definitions for page-specific data
+export interface FooterData {
+  socials: SocialLinkItem[]
+  services: SimplifiedService[]
+}
+
 export interface HomePageData {
   services: SimplifiedService[]
   portfolios: SimplifiedPortfolio[]
   socials: SocialLinkItem[]
+  faqs: SimplifiedFaq[]
 }
 
 export interface ArticlePageData {
@@ -92,17 +157,35 @@ export interface ArticlePostData {
   relatedArticles: Pick<Article, 'id' | 'title' | 'thumbnail' | 'slug' | 'readingTime' | 'author' | 'createdAt'>[]
 }
 
-// Helper functions to transform complex data to simplified format
+export interface ServicesPageData {
+  services: SimplifiedService[]
+}
+
+export interface PortfolioPageData {
+  portfolios: SimplifiedPortfolio[]
+  services: SimplifiedCategory[]
+  totalPages: number
+}
+
+export interface SinglePortfolioData {
+  portfolio: FullPortfolio
+}
+
+
 function transformServiceForClient(service: any): SimplifiedService {
   return {
     id: service.id,
     title: service.title,
+    slug: service.slug,
     description: service.description,
+    content: service.content,
     image: service.image ? {
       url: (typeof service.image === 'object' ? service.image.url : '') || '',
       alt: (typeof service.image === 'object' ? service.image.alt : '') || service.title
     } : null,
-    features: service.features?.map((f: any) => typeof f === 'object' ? f.feature : f) || [],
+    features: service.features?.map((f: any) => ({ feature: typeof f === 'object' ? f.feature : f })) || [],
+    ctaText: service.ctaText,
+    ctaLink: service.ctaLink,
     order: service.order
   }
 }
@@ -111,11 +194,62 @@ function transformPortfolioForClient(portfolio: any): SimplifiedPortfolio {
   return {
     id: portfolio.id,
     title: portfolio.title,
+    slug: portfolio.slug,
     description: portfolio.description,
     image: portfolio.image ? {
       url: (typeof portfolio.image === 'object' ? portfolio.image.url : '') || '',
       alt: (typeof portfolio.image === 'object' ? portfolio.image.alt : '') || portfolio.title
     } : null,
+    service: {
+      id: typeof portfolio.service === 'object' ? portfolio.service.id : portfolio.service,
+      title: typeof portfolio.service === 'object' ? portfolio.service.title : 'Unknown',
+      slug: typeof portfolio.service === 'object' ? portfolio.service.slug : 'unknown'
+    },
+    tags: portfolio.tags?.map((tag: any) => ({
+      id: typeof tag === 'object' ? tag.id : tag,
+      name: typeof tag === 'object' ? tag.name : 'Unknown',
+      slug: typeof tag === 'object' ? tag.slug : 'unknown'
+    })) || [],
+    client: portfolio.client,
+    completedAt: portfolio.completedAt,
+    technologies: portfolio.technologies?.map((tech: any) => ({ technology: typeof tech === 'object' ? tech.technology : tech })) || [],
+    url: portfolio.url,
+    order: portfolio.order
+  }
+}
+
+function transformFullPortfolioForClient(portfolio: any): FullPortfolio {
+  return {
+    id: portfolio.id,
+    title: portfolio.title,
+    slug: portfolio.slug,
+    description: portfolio.description,
+    content: portfolio.content,
+    image: portfolio.image ? {
+      url: (typeof portfolio.image === 'object' ? portfolio.image.url : '') || '',
+      alt: (typeof portfolio.image === 'object' ? portfolio.image.alt : '') || portfolio.title
+    } : null,
+    gallery: portfolio.gallery?.map((item: any) => ({
+      image: {
+        id: typeof item.image === 'object' ? item.image.id : item.image,
+        url: (typeof item.image === 'object' ? item.image.url : '') || '',
+        alt: (typeof item.image === 'object' ? item.image.alt : '') || 'Gallery image'
+      },
+      caption: item.caption || null
+    })) || [],
+    service: {
+      id: typeof portfolio.service === 'object' ? portfolio.service.id : portfolio.service,
+      title: typeof portfolio.service === 'object' ? portfolio.service.title : 'Unknown',
+      slug: typeof portfolio.service === 'object' ? portfolio.service.slug : 'unknown'
+    },
+    tags: portfolio.tags?.map((tag: any) => ({
+      id: typeof tag === 'object' ? tag.id : tag,
+      name: typeof tag === 'object' ? tag.name : 'Unknown',
+      slug: typeof tag === 'object' ? tag.slug : 'unknown'
+    })) || [],
+    client: portfolio.client,
+    completedAt: portfolio.completedAt,
+    technologies: portfolio.technologies?.map((tech: any) => ({ technology: typeof tech === 'object' ? tech.technology : tech })) || [],
     url: portfolio.url,
     order: portfolio.order
   }
@@ -146,19 +280,74 @@ function transformArticleForClient(article: any): SimplifiedArticle {
   }
 }
 
-// Data fetching functions
-export async function getHomePageData(): Promise<HomePageData> {
+export async function getFooterData(): Promise<FooterData> {
   const payload = await getPayload({ config: configPromise })
 
-  const [servicesRes, portfoliosRes, socialsRes] = await Promise.all([
+  const [socialsRes, servicesRes] = await Promise.all([
+    payload.findGlobal({
+      slug: 'socials',
+      select: {
+        links: {
+          text: true,
+          url: true,
+          platform: true,
+          icon: true
+        }
+      },
+      depth: 1
+    }),
     payload.find({
       collection: 'services',
       select: {
         id: true,
         title: true,
+        slug: true,
+        order: true
+      },
+      depth: 0,
+      sort: 'order'
+    })
+  ])
+
+  const filteredLinks = (socialsRes.links || []).filter(
+    (link: any) =>
+      link.platform !== 'address' &&
+      link.platform !== 'working-hours'
+  )
+
+  return {
+    socials: filteredLinks.map((link: any) => ({
+      platform: link.platform,
+      url: link.url,
+      text: link.text,
+      icon: link.icon
+    })) as SocialLinkItem[],
+    services: servicesRes.docs.map(service => ({
+      id: service.id,
+      title: service.title,
+      slug: service.slug,
+      order: service.order
+    }))
+  }
+}
+
+
+export async function getHomePageData(): Promise<HomePageData> {
+  const payload = await getPayload({ config: configPromise })
+
+  const [servicesRes, portfoliosRes, socialsRes, faqsRes] = await Promise.all([
+    payload.find({
+      collection: 'services',
+      select: {
+        id: true,
+        title: true,
+        slug: true,
         description: true,
+        content: true,
         image: true,
         features: true,
+        ctaText: true,
+        ctaLink: true,
         order: true
       },
       depth: 1,
@@ -169,14 +358,20 @@ export async function getHomePageData(): Promise<HomePageData> {
       select: {
         id: true,
         title: true,
+        slug: true,
         description: true,
         image: true,
+        service: true,
+        tags: true,
+        client: true,
+        completedAt: true,
+        technologies: true,
         url: true,
         order: true
       },
-      depth: 1,
+      depth: 2,
       sort: 'order',
-      limit: 6 // Only fetch featured portfolios for home page
+      limit: 6
     }),
     payload.findGlobal({
       slug: 'socials',
@@ -187,7 +382,8 @@ export async function getHomePageData(): Promise<HomePageData> {
         }
       },
       depth: 0
-    })
+    }),
+    getFaqs()
   ])
 
   const filteredLinks = (socialsRes.links || []).filter(
@@ -203,7 +399,148 @@ export async function getHomePageData(): Promise<HomePageData> {
     socials: filteredLinks.map((link: SocialLinkItem) => ({
       platform: link.platform,
       text: link.text
-    })) as Social['links']
+    })) as Social['links'],
+    faqs: faqsRes
+  }
+}
+
+
+export async function getServicesPageData(): Promise<ServicesPageData> {
+  const payload = await getPayload({ config: configPromise })
+
+  const servicesRes = await payload.find({
+    collection: 'services',
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      description: true,
+      content: true,
+      image: true,
+      features: true,
+      ctaText: true,
+      ctaLink: true,
+      order: true
+    },
+    depth: 1,
+    sort: 'order'
+  })
+
+  return {
+    services: servicesRes.docs.map(transformServiceForClient)
+  }
+}
+
+
+export async function getPortfolioPageData(page: number = 1, limit: number = 9, serviceSlug?: string, searchTerm?: string): Promise<PortfolioPageData> {
+  const payload = await getPayload({ config: configPromise })
+
+  const where: any = {}
+
+  if (serviceSlug && serviceSlug !== 'all') {
+    where['service.slug'] = {
+      equals: serviceSlug
+    }
+  }
+
+  if (searchTerm) {
+    where.or = [
+      {
+        title: {
+          contains: searchTerm
+        }
+      },
+      {
+        description: {
+          contains: searchTerm
+        }
+      },
+      {
+        client: {
+          contains: searchTerm
+        }
+      },
+      {
+        'tags.name': {
+          contains: searchTerm
+        }
+      },
+      {
+        'technologies.technology': {
+          contains: searchTerm
+        }
+      }
+    ]
+  }
+
+  const [portfoliosRes, servicesRes] = await Promise.all([
+    payload.find({
+      collection: 'portfolios',
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+        description: true,
+        image: true,
+        service: true,
+        tags: true,
+        client: true,
+        completedAt: true,
+        technologies: true,
+        url: true,
+        order: true
+      },
+      depth: 2,
+      page,
+      limit,
+      where,
+      sort: '-order'
+    }),
+    payload.find({
+      collection: 'services',
+      select: {
+        id: true,
+        title: true,
+        slug: true
+      },
+      limit: 100
+    })
+  ])
+
+  return {
+    portfolios: portfoliosRes.docs.map(transformPortfolioForClient),
+    services: servicesRes.docs.map(service => ({
+      id: service.id,
+      title: service.title,
+      slug: service.slug
+    })),
+    totalPages: portfoliosRes.totalPages
+  }
+}
+
+
+export async function getSinglePortfolioData(slug: string): Promise<SinglePortfolioData | null> {
+  const payload = await getPayload({ config: configPromise })
+
+  const portfolioRes = await payload.find({
+    collection: 'portfolios',
+    where: {
+      slug: {
+        equals: slug
+      }
+    },
+    depth: 2,
+    limit: 1
+  })
+
+  if (portfolioRes.docs.length === 0) {
+    return null
+  }
+
+  const portfolio = portfolioRes.docs[0]
+
+  return {
+    portfolio: transformFullPortfolioForClient(portfolio)
   }
 }
 
@@ -301,7 +638,7 @@ export async function getArticlePostData(slug: string): Promise<ArticlePostData 
 
   const article = articleRes.docs[0]
 
-  // Get related articles from same categories (without content field)
+
   const categoryIds = article.categories?.map((cat: any) =>
     typeof cat === 'object' ? cat.id : cat
   ) || [];
@@ -393,7 +730,7 @@ export async function getFaqs(): Promise<SimplifiedFaq[]> {
       answer: faq.answer
     }))
   } catch (error) {
-    console.error('Error fetching social links:', error)
+    console.error('Error fetching faqs:', error)
     return []
   }
 }
@@ -416,7 +753,7 @@ export async function getEmployees(): Promise<SimplifiedEmployee[]> {
 
     return employees.docs
   } catch (error) {
-    console.error('Error fetching social links:', error)
+    console.error('Error fetching employees:', error)
     return []
   }
 }

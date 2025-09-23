@@ -41,7 +41,7 @@ export default async function SingleArticlePage({ params }: ArticlePageProps) {
 
   const { article: currentArticle, relatedArticles: relatedArticles } = data
 
-  // Get category info from the first category
+
   const firstCategory = Array.isArray(currentArticle.categories) && currentArticle.categories.length > 0
     ? currentArticle.categories[0]
     : null
