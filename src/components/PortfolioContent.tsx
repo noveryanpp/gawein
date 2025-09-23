@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/Button'
 import { useRouter, useSearchParams } from 'next/navigation'
-import type { SimplifiedPortfolio, SimplifiedCategory } from '@/lib/payload'
+import type { SimplifiedPortfolio } from '@/lib/payload'
 
 interface PortfolioContentProps {
   portfolios: SimplifiedPortfolio[]

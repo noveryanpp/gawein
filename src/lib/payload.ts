@@ -1,6 +1,6 @@
 import { getPayload } from 'payload'
 import configPromise from '@/payload.config'
-import type { Article, Social, Media, Service, Portfolio, Employee } from '@/payload-types'
+import type { Article, Media, Service, Portfolio } from '@/payload-types'
 
 
 export interface SimplifiedArticle {

@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/Button'
 import Image from 'next/image'
 import { getArticlePostData, type SingleArticleData } from '@/lib/payload'
 import { RichText } from '@/components/RichText'
-import { Article } from '@/payload-types'
 
 interface ArticleParams {
   slug: string
