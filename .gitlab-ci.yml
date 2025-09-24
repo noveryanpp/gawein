@@ -1,0 +1,24 @@
+deploy-gawein:
+  stage: deploy
+  variables:
+    TARGET_IP: ${DEV_TARGET_IP}
+    TARGET_PORT: ${DEV_TARGET_PORT}
+    TARGET_USER: ${DEV_TARGET_USER}
+    TARGET_DIR: ${DEV_TARGET_DIR}
+  image: alpine:latest
+  before_script:
+    - apk update
+    - apk add openssh
+    - eval $(ssh-agent -s)
+    - echo "${DEPLOYER_KEY}" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - chmod 600 ~/.ssh/config
+  script:
+    - echo "${TARGET_DIR}"
+    - ssh -p${TARGET_PORT} ${TARGET_USER}@${TARGET_IP} "cd ${TARGET_DIR} && pwd && git stash && git pull origin main && git stash apply && docker compose up --build -d"
+  only:
+    - devel
+  tags:
+    - ad-runner
