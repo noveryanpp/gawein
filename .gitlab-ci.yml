@@ -1,6 +1,7 @@
 deploy-gawein:
   stage: deploy
   variables:
+    GIT_STRATEGY: none
     TARGET_IP: ${DEV_TARGET_IP}
     TARGET_PORT: ${DEV_TARGET_PORT}
     TARGET_USER: ${DEV_TARGET_USER}
