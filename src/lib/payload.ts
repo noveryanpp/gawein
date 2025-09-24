@@ -455,7 +455,7 @@ export async function getHomePageData(): Promise<HomePageData> {
         url: true,
         order: true
       },
-      depth: 2,
+      depth: 1,
       sort: 'order',
       limit: 6
     }),

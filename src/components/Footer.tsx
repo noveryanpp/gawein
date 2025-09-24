@@ -62,7 +62,7 @@ export const Footer = async () => {
                     className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-[#2EBEFA] transition-all duration-300 hover:scale-110"
                   >
                     {social.icon && (
-                      <Image src={social.icon.url} alt={social.platform} className="w-5 h-5" />
+                      <Image src={social.icon.url} alt={social.platform} width={24} height={24} className="w-5 h-5" />
                     )}
                   </a>
                 ))}
