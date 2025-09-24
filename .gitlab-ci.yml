@@ -19,6 +19,6 @@ deploy-gawein:
     - echo "${TARGET_DIR}"
     - ssh -p${TARGET_PORT} ${TARGET_USER}@${TARGET_IP} "cd ${TARGET_DIR} && pwd && git stash && git pull origin main && git stash apply && docker compose up --build -d"
   only:
-    - devel
+    - main
   tags:
     - ad-runner
