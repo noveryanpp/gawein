@@ -16,14 +16,8 @@ deploy-gawein:
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     - chmod 600 ~/.ssh/config
   script:
-    - whoami
-    - echo "Deploying to ${TARGET_USER}@${TARGET_IP}:${TARGET_DIR}"
-    - ssh -p${TARGET_PORT} ${TARGET_USER}@${TARGET_IP} "
-        cd ${TARGET_DIR} && \
-        git fetch --all && \
-        git reset --hard origin/main && \
-        docker compose up --build -d
-      "
+    - echo "${TARGET_DIR}"
+    - ssh -p${TARGET_PORT} ${TARGET_USER}@${TARGET_IP} "cd ${TARGET_DIR} && pwd && git reset --hard origin/main && docker compose up --build -d"
   only:
     - main
   tags:
