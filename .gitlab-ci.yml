@@ -7,8 +7,7 @@ deploy-gawein:
     TARGET_DIR: ${DEV_TARGET_DIR}
   image: alpine:latest
   before_script:
-    - apk update
-    - apk add openssh
+    - apk update && apk add openssh
     - eval $(ssh-agent -s)
     - echo "${DEPLOYER_KEY}" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
@@ -16,9 +15,14 @@ deploy-gawein:
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     - chmod 600 ~/.ssh/config
   script:
-    - whiami
-    - echo "${TARGET_DIR}"
-    - ssh -p${TARGET_PORT} ${TARGET_USER}@${TARGET_IP} "cd ${TARGET_DIR} && pwd && git stash && git pull origin main && git stash apply && docker compose up --build -d"
+    - whoami
+    - echo "Deploying to ${TARGET_USER}@${TARGET_IP}:${TARGET_DIR}"
+    - ssh -p${TARGET_PORT} ${TARGET_USER}@${TARGET_IP} "
+        cd ${TARGET_DIR} && \
+        git fetch --all && \
+        git reset --hard origin/main && \
+        docker compose up --build -d
+      "
   only:
     - main
   tags:
