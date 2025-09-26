@@ -17,7 +17,7 @@ deploy-gawein:
     - chmod 600 ~/.ssh/config
   script:
     - echo "${TARGET_DIR}"
-    - ssh -p${TARGET_PORT} ${TARGET_USER}@${TARGET_IP} "cd ${TARGET_DIR} && pwd && git reset --hard origin/main && docker compose up --build -d"
+    - ssh -p${TARGET_PORT} ${TARGET_USER}@${TARGET_IP} "cd ${TARGET_DIR} && pwd && git pull && docker compose up --build -d"
   only:
     - main
   tags:
