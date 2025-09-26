@@ -45,8 +45,7 @@ export const AboutSection = () => {
                     Pendekatan Berfokus pada Klien
                   </h3>
                   <p className="text-gray-600">
-                    Kesuksesan kamu adalah prioritas kami. Solusi kami selalu disesuaikan dengan
-                    kebutuhan unikmu.
+                    Kesuksesan kamu adalah prioritas kami. Solusi kami selalu disesuaikan dengan kebutuhan unikmu.
                   </p>
                 </div>
               </div>
