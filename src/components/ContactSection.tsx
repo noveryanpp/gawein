@@ -121,8 +121,7 @@ export const ContactSection = ({ socials }: ContactSectionProps) => {
                 !
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Siap ubah ide jadi kenyataan? Ceritakan kebutuhanmu ke kami, dan kami akan bantu
-                wujudkan solusi terbaik untuk bisnismu.
+                Siap ubah ide jadi kenyataan? Ceritakan kebutuhanmu ke kami, dan kami akan bantu wujudkan solusi terbaik untuk bisnismu.
               </p>
             </div>
 
