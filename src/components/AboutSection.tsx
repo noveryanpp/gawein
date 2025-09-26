@@ -34,8 +34,7 @@ export const AboutSection = () => {
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Inovasi Utama</h3>
                   <p className="text-gray-600">
-                    Kami memanfaatkan teknologi terbaru untuk menciptakan solusi yang siap masa
-                    depan.
+                    Kami memanfaatkan teknologi terbaru untuk menciptakan solusi yang siap masa depan.
                   </p>
                 </div>
               </div>
