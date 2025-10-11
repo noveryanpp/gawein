@@ -367,6 +367,7 @@ function transformArticleForClient(article: Article): SimplifiedArticle {
 }
 
 export async function getFooterData(): Promise<FooterData> {
+  await connection();
   const payload = await getPayload({ config: configPromise })
 
   const [socialsRes, servicesRes] = await Promise.all([
@@ -419,6 +420,7 @@ export async function getFooterData(): Promise<FooterData> {
 
 
 export async function getHomePageData(): Promise<HomePageData> {
+  await connection();
   const payload = await getPayload({ config: configPromise })
 
   const [servicesRes, portfoliosRes, socialsRes, faqsRes] = await Promise.all([
@@ -492,6 +494,7 @@ export async function getHomePageData(): Promise<HomePageData> {
 
 
 export async function getServicesPageData(): Promise<ServicesPageData> {
+  await connection();
   const payload = await getPayload({ config: configPromise })
 
   const servicesRes = await payload.find({
@@ -519,6 +522,7 @@ export async function getServicesPageData(): Promise<ServicesPageData> {
 
 
 export async function getPortfolioPageData(page: number = 1, limit: number = 9, serviceSlug?: string, searchTerm?: string): Promise<PortfolioPageData> {
+  await connection();
   const payload = await getPayload({ config: configPromise })
 
   const where: any = {}
@@ -606,6 +610,7 @@ export async function getPortfolioPageData(page: number = 1, limit: number = 9, 
 
 
 export async function getSinglePortfolioData(slug: string): Promise<SinglePortfolioData | null> {
+  await connection();
   const payload = await getPayload({ config: configPromise })
 
   const portfolioRes = await payload.find({
@@ -631,6 +636,7 @@ export async function getSinglePortfolioData(slug: string): Promise<SinglePortfo
 }
 
 export async function getArticlePageData(page: number = 1, limit: number = 6, categorySlug?: string, searchTerm?: string): Promise<ArticlePageData> {
+  await connection();
   const payload = await getPayload({ config: configPromise })
 
   const where: any = {}
@@ -705,6 +711,7 @@ export async function getArticlePageData(page: number = 1, limit: number = 6, ca
 }
 
 export async function getArticlePostData(slug: string): Promise<SingleArticleData | null> {
+  await connection();
   const payload = await getPayload({ config: configPromise })
 
   const articleRes = await payload.find({
@@ -802,6 +809,7 @@ export async function getArticlePostData(slug: string): Promise<SingleArticleDat
 }
 
 export async function getSocialLinks(): Promise<SocialLinkItem[]> {
+  await connection();
   const payload = await getPayload({ config: configPromise })
 
   try {
@@ -829,11 +837,13 @@ export async function getSocialLinks(): Promise<SocialLinkItem[]> {
 }
 
 export async function getSocialLinksByPlatform(platform: SocialLinkItem['platform']): Promise<SocialLinkItem[]> {
+  await connection();
   const links = await getSocialLinks();
   return links.filter(link => link.platform === platform);
 }
 
 export async function getFaqs(): Promise<SimplifiedFaq[]> {
+  await connection();
   const payload = await getPayload({ config: configPromise })
 
   try {
@@ -858,6 +868,7 @@ export async function getFaqs(): Promise<SimplifiedFaq[]> {
 }
 
 export async function getEmployees(): Promise<SimplifiedEmployee[]> {
+  await connection();
   const payload = await getPayload({ config: configPromise })
 
   try {
