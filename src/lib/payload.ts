@@ -1,7 +1,7 @@
 import { getPayload } from 'payload'
 import configPromise from '@/payload.config'
 import type { Article, Media, Service, Portfolio } from '@/payload-types'
-
+// test
 
 export interface SimplifiedArticle {
   id: number
